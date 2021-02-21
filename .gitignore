@@ -114,3 +114,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 .vscode
+
+# IntelliJ
+*.iml
+.idea
