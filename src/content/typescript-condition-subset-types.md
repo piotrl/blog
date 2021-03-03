@@ -1,7 +1,7 @@
 ---
 title: 'TypeScript: Create a condition-based subset types'
 author: [Piotr Lewandowski]
-tags: [angular, typescript]
+tags: [typescript]
 image: img/cover.typescript.png
 date: '2018-06-23'
 draft: false

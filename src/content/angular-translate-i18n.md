@@ -1,7 +1,7 @@
 ---
 title: 'Angular - Translate Enums (i18n)'
 author: [Piotr Lewandowski]
-tags: [angular, typescript]
+tags: [angular, i18n]
 image: img/angular-i18n-enums-cover.jpeg
 date: '2019-07-12'
 draft: false

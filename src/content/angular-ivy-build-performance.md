@@ -1,7 +1,7 @@
 ---
 title: 'Angular with Ivy - Build performance review'
 author: [Piotr Lewandowski]
-tags: [angular, typescript]
+tags: [angular, ivy]
 image: img/angular-ivy-build-performance.cover.png
 date: '2020-04-14'
 draft: false
