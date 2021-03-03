@@ -51,14 +51,13 @@ export interface WebsiteConfig {
 const config: WebsiteConfig = {
   title: 'Piotr Lewandowski',
   description: 'Web development',
-  coverImage: 'img/blog-cover.png',
-  logo: 'img/ghost-logo.png',
+  coverImage: 'img/headline.png',
+  logo: 'img/headline.png',
   lang: 'en',
   siteUrl: 'https://gatsby-casper.netlify.com',
   twitter: 'https://twitter.com/constjs',
   showSubscribe: false,
   googleSiteVerification: 'GoogleCode',
-  footer: 'from Poland',
 };
 
 export default config;
