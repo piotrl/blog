@@ -3,13 +3,21 @@
     "module": "commonjs",
     "target": "esnext",
     "jsx": "preserve",
-    "lib": ["dom", "es2015", "es2017"],
+    "lib": ["dom", "es2015", "es2017", "esnext.asynciterable"],
     "strict": true,
     "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": false,
-    "preserveConstEnums": true
-  }
+    "preserveConstEnums": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "sourceMap": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["@types/**/*.*", "src/**/*.*"]
 }
