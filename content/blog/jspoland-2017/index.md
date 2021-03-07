@@ -119,7 +119,7 @@ That being said, you can’t predict how your core life values will evolve. Havi
 
 * Expenses correlated with salary — Money gives you freedom and takes it back once you get used to it. Think of it if you would want to become musician someday. Avoid increasing expenses together with salary. Lowering lifestyle is not easy.
 
-### Career C**ompass**
+### Career Compass
 
 * Use fun and challenges as compass of your career.
 
