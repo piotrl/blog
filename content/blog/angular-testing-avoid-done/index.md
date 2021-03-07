@@ -1,16 +1,15 @@
 ---
 title: 'Angular Testing: Avoid done() function'
 author: [Piotr Lewandowski]
-cover: 'cover.png'
+tags: ['angular']
+cover: './cover.png'
 date: '2021-03-03'
-draft: false
+description: 'xyz'
 ---
 
 # Angular Testing: Avoid done() function
 
 Let’s talk about harmfulness of real asynchronicity in tests.
-
-![](https://cdn-images-1.medium.com/max/4480/1*RcdHJefE3r_9rtUNN6a2xQ.png)
 
 Have you ever encountered random test instability on Continuous Integration? Called some test were just “flaky”? I guess you did! There might be lots of reasons for flakiness of tests. I found asynchronous operations are great contributor to [flakiness score](https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/).
 

@@ -82,9 +82,9 @@ module.exports = {
         //trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,//`ADD YOUR TRACKING ID HERE`,
       },
     },
-    {
-      resolve: `gatsby-plugin-feed`,
-    },
+    // {
+    //   resolve: `gatsby-plugin-feed`,
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

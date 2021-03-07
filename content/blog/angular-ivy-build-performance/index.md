@@ -1,10 +1,10 @@
 ---
 title: 'Angular with Ivy - Build performance review'
 author: [Piotr Lewandowski]
-cover: 'cover.png'
-date: '2020-04-14'
 tags: ['markdown', 'test', 'tips']
-draft: false
+cover: './cover.png'
+date: '2020-04-14'
+description: 'xyz'
 ---
 
 #### We have seen various benchmarks and charts on conferences. What is the real impact on our application?

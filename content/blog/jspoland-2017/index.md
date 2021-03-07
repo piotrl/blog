@@ -1,10 +1,10 @@
 ---
 title: 'JS Poland 2017 - takeaways'
 author: [Piotr Lewandowski]
-cover: 'cover.png'
+tags: ['events']
+cover: './cover.png'
 date: '2017-06-22'
-excerpt: No new framework announced, go home kiddo… Oh Wait Nope! Progressive Web Apps happens to be the new hotness.
-draft: false
+description: 'xyz'
 ---
 
 # JS Poland 2017 — Takeaways

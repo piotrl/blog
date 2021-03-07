@@ -3,6 +3,7 @@ title: This is markdown unity test!
 date: '2019-04-22'
 tags: ['markdown', 'test', 'unity']
 cover: './preview-1.jpg'
+description: 'xyz'
 ---
 
 Documentation stored with source files shares the same permissions.
@@ -21,6 +22,7 @@ standard [GitHub](https://github.com/) presentation.
 README.md files are meant to provide orientation for developers
 browsing the repository, especially first-time users.
 
+description: 'xyz'
 ---
 
 We recommend that Git repositories have an up-to-date top-level

@@ -1,9 +1,10 @@
 ---
 title: 'TypeScript: Create a condition-based subset types'
 author: [Piotr Lewandowski]
-cover: 'cover.png'
+tags: ['typescript']
+cover: './cover.png'
 date: '2018-06-23'
-draft: false
+description: 'xyz'
 ---
 
 ## Deep dive into typing system to solve THE ultimate riddle
@@ -56,6 +57,7 @@ type SubType = {
 }
 ```
 
+description: 'xyz'
 ---
 
 ## 📈Step by step to a solution
@@ -158,6 +160,7 @@ Pick<Person, 'id' | 'name'>;
 }
 ```
 
+description: 'xyz'
 ---
 
 ## 🎉Full Solution
@@ -187,6 +190,7 @@ type SubType<Base, Condition> = Pick<Base, {
 }[keyof Base]>;
 ```
 
+description: 'xyz'
 ---
 
 ## 🔥 Usages
@@ -235,6 +239,7 @@ type Callable = {
 
 If you find any other nice use cases, show us in a comment!
 
+description: 'xyz'
 ---
 
 ### 🤔 What this solution won’t solve?
@@ -256,6 +261,7 @@ type Nullable = SubType<{
 
 Also, I would not recommend using Object.keys() on such a structure as runtime result might be different than given type.
 
+description: 'xyz'
 ---
 
 ## Summary

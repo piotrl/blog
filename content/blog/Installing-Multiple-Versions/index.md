@@ -1,8 +1,9 @@
 ---
 title: 'Installing Multiple Versions of Node.js Using NVM'
 date: '2019-04-16'
+tags: ['javascript', 'tips', 'node']
 cover: './preview.jpg'
-tags: ['javaScript', 'tips', 'node']
+description: 'xyz'
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pharetra sapien nibh, sed tempor mauris suscipit ac. Duis libero nibh, porttitor at posuere at, luctus et urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce et augue vitae nisl ultrices posuere. Sed facilisis metus rutrum, commodo lorem sed, consequat sem. Morbi enim orci, molestie a rutrum cursus, pellentesque nec ligula. Etiam porttitor iaculis purus sed imperdiet. Nulla consectetur eu sem ut dapibus. Duis nec viverra nisl, quis tincidunt massa.

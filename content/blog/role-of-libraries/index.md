@@ -3,6 +3,7 @@ title: Role of libraries in a social world
 date: '2019-03-05T22:12:03.284Z'
 tags: ['test', 'hooks', 'node']
 cover: './preview.jpg'
+description: 'xyz'
 ---
 
 When it comes to sharing news, social media drives an increasingly large part of our news consumption, with 62 per cent of adults in America getting some of their news from social media. Of those, Facebook is by far the largest player, by consistently resisting calls for it to make the kind of editorial decisions that newspapers and other media outlets traditionally made (Segreti, 2016). Yet, the same algorithms that power the rest of Facebook have embedded within them many editorial implications (Lee, 2016). These algorithms are designed to do certain things, and favor sharing certain kinds of content, with a strong incentive toward encouraging engagement. They want customers to use Facebook as much as possible, and everything about the platform is designed to encourage people to engage with the system. The end result is that, while most users will only see a selected portion of their friends’ posts, the content that Facebook favors and promotes is content that is attention-grabbing – regardless of its accuracy.
