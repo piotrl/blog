@@ -14,11 +14,8 @@ const Error404Page: React.FC<PageProps> = () => {
       <SEO title="404: Not Found" />
       <NotFound />
       <Footer>
-        Copyright &copy; {new Date().getFullYear()}
-        <a href="https://redq.io/" target="_blank">
-          {' '}
-          RedQ, Inc.
-        </a>
+        Copyright &copy; {new Date().getFullYear()}&nbsp;
+        Piotr Lewandowski
       </Footer>
     </>
   );

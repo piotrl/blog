@@ -28,8 +28,8 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         {/*<InstagramShowcase />*/}
         {/*<Newsletter />*/}
         <Footer>
-          Copyright &copy; {new Date().getFullYear()}
-          <a href="https://redq.io/"> RedQ, Inc.</a>
+          Copyright &copy; {new Date().getFullYear()}&nbsp;
+          Piotr Lewandowski
         </Footer>
         <ScrollToTop
           showUnder={300}
