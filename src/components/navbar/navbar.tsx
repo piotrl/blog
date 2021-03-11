@@ -29,14 +29,6 @@ const MenuItems = [
     label: 'About',
     url: '/about',
   },
-  {
-    label: 'Contact',
-    url: '/contact',
-  },
-  {
-    label: '404 Page',
-    url: '/404',
-  },
 ];
 
 const Navbar: React.FunctionComponent<NavbarProps> = ({
@@ -69,11 +61,11 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
         <DrawerProvider>
           <MobileMenu items={MenuItems} logo={LogoImage} />
         </DrawerProvider>
-        <Logo>
-          <Link to="/">
-            <img src={LogoImage} alt="logo" />
-          </Link>
-        </Logo>
+        {/*<Logo>*/}
+        {/*  <Link to="/">*/}
+        {/*    <img src={LogoImage} alt="logo" />*/}
+        {/*  </Link>*/}
+        {/*</Logo>*/}
         <MenuWrapper>
           <Menu items={MenuItems} />
         </MenuWrapper>

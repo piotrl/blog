@@ -44,7 +44,7 @@ export const Logo = styled.div`
 
 export const MenuWrapper = styled.div`
   display: flex;
-  flex-grow: 1;
+  flex-grow: 0;
   @media (max-width: 990px) {
     display: none;
   }

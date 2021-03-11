@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `const js =`,
     author: `Piotr`,
-    about: `Hope to become good public speaker with focus on knowledge sharing. Sportsman with half-marathon behind.`,
+    about: `JavaScript performance-solver at @Dynatrace. JavaScript trouble-maker on my own.`,
     description: `A personal blog`,
     siteUrl: `https://piotrl.net`,
   },
