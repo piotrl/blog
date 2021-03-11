@@ -101,7 +101,7 @@ const ResetCSS = createGlobalStyle`
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    margin-bottom: 2.7em;
+    margin-bottom: 2em;
     line-height: 1.6;
   }
 
@@ -140,5 +140,6 @@ const ResetCSS = createGlobalStyle`
     }
     
   }
+
 `
 export default ResetCSS

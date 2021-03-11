@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import PostCard from '../../../components/post-card/post-card';
+import PostCardMinimal from '../../../components/post-card-minimal/post-card-minimal';
 import Pagination from '../../../components/pagination/pagination';
-import BlogPostsWrapper from './style';
+import BlogPostsWrapper, { SecTitle } from './style';
 
 type PostsProps = {};
 
@@ -24,7 +24,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
       }
       allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
-        limit: 4
+        limit: 5
       ) {
         totalCount
         edges {
@@ -40,7 +40,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
               tags
               cover {
                 childImageSharp {
-                  fluid(maxWidth: 1170, maxHeight: 690, quality: 90) {
+                  fluid(maxWidth: 325, maxHeight: 325, quality: 90) {
                     ...GatsbyImageSharpFluid_withWebp_tracedSVG
                   }
                 }
@@ -52,16 +52,17 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
     }
   `);
 
-  const Posts = Data.allMarkdownRemark.edges;
+  const posts = Data.allMarkdownRemark.edges;
   const TotalPage = Data.allSitePage.nodes[0].context.numPages;
   const CurrentPage = Data.allSitePage.nodes[0].context.currentPage;
 
   return (
     <BlogPostsWrapper>
-      {Posts.map(({ node }: any) => {
+      <SecTitle>Leatest Stories</SecTitle>
+      {posts.map(({ node }: any) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
-          <PostCard
+          <PostCardMinimal
             key={node.fields.slug}
             title={title}
             image={

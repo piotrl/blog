@@ -2,12 +2,17 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import SocialProfile from '../../../components/social-profile/social-profile';
-import { IntroWrapper, IntroImage, IntroTitle, Desciption } from './style';
 import {
-  IoLogoFacebook,
+  IntroWrapper,
+  IntroImage,
+  IntroTitle,
+  Desciption,
+  IntroInfo,
+} from './style';
+import {
   IoLogoTwitter,
-  IoLogoInstagram,
-  IoLogoGithub, IoLogoLinkedin,
+  IoLogoGithub,
+  IoLogoLinkedin,
 } from 'react-icons/io';
 
 type IntroProps = {};
@@ -57,11 +62,13 @@ const Intro: React.FunctionComponent<IntroProps> = () => {
       <IntroImage>
         <Image fluid={AuthorImage} alt="author" />
       </IntroImage>
-      <IntroTitle>
-        Hey! I’m <b>{author}</b>
-      </IntroTitle>
-      <Desciption>{about}</Desciption>
-      <SocialProfile items={SocialLinks} />
+      <IntroInfo>
+        <IntroTitle>
+          Hey! I’m <b>{author}</b>
+        </IntroTitle>
+        <Desciption>{about}</Desciption>
+        <SocialProfile items={SocialLinks} />
+      </IntroInfo>
     </IntroWrapper>
   );
 };

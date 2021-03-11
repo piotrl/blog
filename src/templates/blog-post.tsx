@@ -59,9 +59,12 @@ const BlogPostTemplate = (props: any) => {
               : post.frontmatter.cover.childImageSharp.fluid
           }
           description={post.html}
+          imagePosition="left"
         />
 
-        <BlogPostFooter>
+        <BlogPostFooter
+          className={post.frontmatter.cover == null ? 'center' : ''}
+        >
           {post.frontmatter.tags == null ? null : (
             <PostTags className="post_tags">
               {post.frontmatter.tags.map((tag: string, index: number) => (
@@ -93,7 +96,9 @@ const BlogPostTemplate = (props: any) => {
             </RedditShareButton>
           </PostShare>
         </BlogPostFooter>
-        <BlogPostComment>
+        <BlogPostComment
+          className={post.frontmatter.cover == null ? 'center' : ''}
+        >
           <DiscussionEmbed {...disqusConfig} />
         </BlogPostComment>
       </BlogPostDetailsWrapper>
@@ -173,7 +178,7 @@ export const pageQuery = graphql`
             cover {
               publicURL
               childImageSharp {
-                fluid(maxWidth: 370, maxHeight: 220, quality: 90) {
+                fluid(maxWidth: 480, maxHeight: 285, quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }

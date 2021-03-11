@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import PostCard from '../components/post-card/post-card';
+import PostCardMinimal from '../components/post-card-minimal/post-card-minimal';
 import Pagination from '../components/pagination/pagination';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { BlogPostsWrapper } from './templates.style';
+
 
 const BlogList = (props: any) => {
   const { data } = props;
@@ -25,7 +26,7 @@ const BlogList = (props: any) => {
       <BlogPostsWrapper>
         {Posts.map(({ node }: any) => {
           return (
-            <PostCard
+            <PostCardMinimal
               key={node.fields.slug}
               title={node.frontmatter.title || node.fields.slug}
               image={
@@ -55,7 +56,7 @@ const BlogList = (props: any) => {
 export default BlogList;
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query BlogListQuery($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -82,7 +83,7 @@ export const pageQuery = graphql`
             tags
             cover {
               childImageSharp {
-                fluid(maxWidth: 1170, quality: 90) {
+                fluid(maxWidth: 170, maxHeight: 170, quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }

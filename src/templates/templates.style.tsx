@@ -35,20 +35,18 @@ export const BlogPostsWrapper = styled.div`
 
 export const RelatedPostWrapper = styled.div`
   margin: 0 auto;
-  @media (min-width: 990px) {
-    width: 900px;
-  }
-  @media (min-width: 1200px) {
-    width: 1050px;
-  }
-  @media (min-width: 1400px) {
-    width: 1170px;
+  padding-left: 75px;
+  padding-right: 75px;
+  @media (min-width: 1550px) {
+    width: 1500px;
+    padding-left: 0;
+    padding-right: 0;
   }
   @media (max-width: 990px) {
-    padding: 80px 45px 0 45px;
+    padding: 0 45px 0 45px;
   }
   @media (max-width: 575px) {
-    padding: 60px 25px 0 25px;
+    padding: 0 25px 0 25px;
   }
 `;
 
@@ -217,8 +215,8 @@ export const TagName = styled.h1`
   }
 `;
 export const BlogPostFooter = styled.div`
-  margin: 0 auto;
-  width: 870px;
+  margin: 0 0 0 auto;
+  width: 58%;
   max-width: 100%;
   padding-top: 60px;
   display: flex;
@@ -226,16 +224,24 @@ export const BlogPostFooter = styled.div`
   justify-content: space-between;
   @media (max-width: 990px) {
     padding-top: 40px;
+    width: 100%;
+  }
+  &.center {
+    margin: 0 auto;
   }
 `;
 
 export const BlogPostComment = styled.div`
-  margin: 0 auto;
-  width: 870px;
+  margin: 0 0 0 auto;
+  width: 58%;
   max-width: 100%;
   padding-top: 80px;
   @media (max-width: 990px) {
     padding-top: 60px;
+    width: 100%;
+  }
+  &.center {
+    margin: 0 auto;
   }
 `;
 
@@ -265,25 +271,25 @@ export const PostShare = styled.div`
     }
   }
 `;
+
 export const BlogPostDetailsWrapper = styled.div`
   margin: 0 auto;
   padding: 90px 0 120px 0;
-  @media (min-width: 990px) {
-    width: 900px;
+  padding-left: 75px;
+  padding-right: 75px;
+  @media (min-width: 1550px) {
+    width: 1500px;
+    padding-left: 0;
+    padding-right: 0;
   }
-  @media (min-width: 1200px) {
-    width: 1050px;
-  }
-  @media (min-width: 1400px) {
-    width: 1170px;
-  }
-  @media (max-width: 990px) {
-    padding: 80px 45px 0 45px;
+  @media (max-width: 1199px) {
+    padding: 80px 35px 80px 35px;
   }
   @media (max-width: 575px) {
-    padding: 60px 25px 0 25px;
+    padding: 60px 25px 60px 25px;
   }
 `;
+
 export const PostTags = styled.div`
   display: flex;
   flex-wrap: wrap;

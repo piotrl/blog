@@ -1,27 +1,23 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import Layout from '../components/layout';
 import PersonalBlog from '../containers/home';
 import SEO from '../components/seo';
 
-const PersonalBlogPage = (props: any) => {
-  const { data } = props;
-
-  return (
-    <Layout>
-      <SEO
-        title="Personal Blog"
-        description={data.site.siteMetadata.description}
-      />
-      <PersonalBlog />
-    </Layout>
-  );
-};
-
-export default PersonalBlogPage;
-
+// Please note that you can use https://github.com/dotansimha/graphql-code-generator
+// to generate all types from graphQL schema
+interface IndexPageProps extends PageProps {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+        description: string;
+      };
+    };
+  };
+}
 export const pageQuery = graphql`
-  query {
+  query IndexQuery {
     site {
       siteMetadata {
         title
@@ -30,3 +26,18 @@ export const pageQuery = graphql`
     }
   }
 `;
+const IndexPage: React.FC<IndexPageProps> = (props) => {
+  const { data } = props;
+
+  return (
+    <Layout>
+      <SEO
+        title="Personal Blog Minimal"
+        description={data.site.siteMetadata.description}
+      />
+      <PersonalBlog />
+    </Layout>
+  );
+};
+
+export default IndexPage;

@@ -1,11 +1,10 @@
+import { PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import About from '../containers/about';
 
-type AboutPageProps = {};
-
-const AboutPage: React.FunctionComponent<AboutPageProps> = () => {
+const AboutPage: React.FunctionComponent<PageProps> = () => {
   return (
     <Layout>
       <SEO

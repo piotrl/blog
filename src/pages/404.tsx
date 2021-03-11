@@ -1,12 +1,12 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { PageProps } from 'gatsby';
 import Navbar from '../components/navbar/navbar';
 import ResetCss from '../components/reset-css';
 import SEO from '../components/seo';
 import NotFound from '../containers/not-found';
 import Footer from '../components/footer/footer';
 
-const NotFoundPage = () => {
+const Error404Page: React.FC<PageProps> = () => {
   return (
     <>
       <ResetCss />
@@ -15,20 +15,13 @@ const NotFoundPage = () => {
       <NotFound />
       <Footer>
         Copyright &copy; {new Date().getFullYear()}
-        <a href="https://redq.io/"> RedQ, Inc.</a>
+        <a href="https://redq.io/" target="_blank">
+          {' '}
+          RedQ, Inc.
+        </a>
       </Footer>
     </>
   );
 };
 
-export default NotFoundPage;
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
+export default Error404Page;
