@@ -5,6 +5,7 @@ export const FeaturedPostWrapper = styled.div`
   margin: 0 auto;
   padding: 0 75px 0 75px;
   position: relative;
+  max-width: 1800px;
 
   @media (max-width: 1400px) {
     padding: 0 35px 0 35px;
