@@ -71,10 +71,10 @@
     "prettier": "^2.1.1"
   },
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "clean": "gatsby clean",
-    "serve": "gatsby serve",
+    "build": "yarn gatsby build",
+    "develop": "yarn gatsby develop",
+    "clean": "yarn gatsby clean",
+    "serve": "yarn gatsby serve",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js"
   }
