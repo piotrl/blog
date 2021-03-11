@@ -1,19 +1,15 @@
 ---
 title: 'Angular Testing: Avoid done() function'
 author: [Piotr Lewandowski]
-tags: ['angular']
+tags: ['angular', 'jest', 'testing']
 cover: './cover.png'
 date: '2021-03-03'
-description: 'xyz'
+description: 'Let’s talk about harmfulness of real asynchronicity in tests'
 ---
-
-# Angular Testing: Avoid done() function
-
-Let’s talk about harmfulness of real asynchronicity in tests.
 
 Have you ever encountered random test instability on Continuous Integration? Called some test were just “flaky”? I guess you did! There might be lots of reasons for flakiness of tests. I found asynchronous operations are great contributor to [flakiness score](https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/).
 
-Here **I want to describe mocking async as simple alternative to done() **that could avoid many potential build failures.
+Here **I want to describe mocking async as simple alternative to done()** that could avoid many potential build failures.
 
 I’m going to use Observable to simulate asynchronous operations. It is not limited to RxJs though. The article applies to any kind of asynchronous operations under the hood of components and services.
 
@@ -30,18 +26,14 @@ To access variables in the callback, we have to be in its function scope!
   });
 ```
 
-It looks innocent, sometimes even works! When it does not work? Simply when anyObservable goes async and calls subscribe() with small delay.
-
-In above example, test is always green then, because test executes faster than subscribe() callback is called. It’s also green when the value does not match expect().
+It looks innocent, sometimes even works! When it does not work? Simply when anyObservable goes async and calls `subscribe()` with small delay. In above example, test is always green then, because test executes faster than `subscribe()` callback is called. It’s also green when the value does not match `expect()`.
 > It’s simply never checked. Just like [volkswagen engines emissions test](https://en.wikipedia.org/wiki/Volkswagen_emissions_scandal) — always green.
 
 ### When we’re handling asynchronous operation?
 
-Think of any DOM event listeners, HTTP calls, Websockets, animations, own state management events, timers, intervals, Promises and more.
+Think of any DOM event listeners, HTTP calls, Websockets, animations, own state management events, timers, intervals, Promises and more. We do lots of async things in our components. It would be unwise if we just assume those things does not affect tests.
 
-We do lots of async things in our components. It would be unwise if we just assume those things does not affect tests.
-
-To overcome this, frameworks like Jest or Karma provide done() function. It’s a marker for test runners not to finish the test until we call it.
+To overcome this, frameworks like Jest or Karma provide `done()` function. It’s a marker for test runners not to finish the test until we call it.
 
 ```typescript
   it('should be green for async operation', (done) => {
@@ -53,7 +45,7 @@ To overcome this, frameworks like Jest or Karma provide done() function. It’s 
   });
 ```
 
-Bingo, isn’t it? So, why do I have the intention to discourage using done()?
+Bingo, isn’t it? So, why do I have the intention to discourage using `done()`?
 
 ## Poor assumptions of done()
 
@@ -103,8 +95,6 @@ When callbacks are **synchronous**, we don’t really need to use expect() insid
 
 Wouldn’t it be beautiful if we could just skip asynchronous nature of the events?
 
-<iframe src="https://medium.com/media/08258efb203aad6f17f967c44ecadebb" frameborder=0></iframe>
-
 ## How to mock async operations? fakeAsync()
 
 Testing asynchronous code is the more typical. Asynchronous tests can be painful. The best way to handle them? Avoid!
@@ -127,9 +117,9 @@ In Angular, we have absolute genius mock. It makes everything synchronous and co
   }));
 ```
 
-☝️ Above, we have an interval(1000)emitting new increment every second starting from 0. Typically, **we don’t want to wait real 2 seconds** to check conditions. For 10 000 tests it means 5 hours of waiting.
+☝️ Above, we have an interval(1000) emitting new increment every second starting from 0. Typically, **we don’t want to wait real 2 seconds** to check conditions. For 10 000 tests it means 5 hours of waiting. 
 
-Time is frozen. We’re in charge with tick() function. Whenever we want. Whatever amount of time should pass. With precision to millisecond.
+With `fakeAsync()` time is frozen. We’re in charge with `tick()` function. Whenever we want. Whatever amount of time should pass. With precision to millisecond.
 
 Again, everything is synchronous. You just don’t need done() function.
 

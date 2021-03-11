@@ -1,31 +1,13 @@
 ---
 title: 'Angular with Ivy - Build performance review'
 author: [Piotr Lewandowski]
-tags: ['markdown', 'test', 'tips']
+tags: ['angular', 'ivy', 'review']
 cover: './cover.png'
 date: '2020-04-14'
-description: 'xyz'
+description: 'We have seen various benchmarks and charts on conferences. What is the real impact on our application?'
 ---
 
-#### We have seen various benchmarks and charts on conferences. What is the real impact on our application?
-
-In this article, we’re going to dive into bundle-size and compilation speed insights.
-
-### Table of Contents
-  * [Application context](#application-context)
-  * [Bundle size benchmark](#bundle-size-benchmark) 
-    * [Full build size](#full-build-size) 
-    * [gzipped value does not knock down](#gzipped-value-does-not-knock-down)
-    * [Why is main.js bigger?](#why-is-mainjs-bigger) 
-  * [Compilation speed benchmark](#compilation-speed-benchmark)
-    * [Production build](#production-build) 
-    * [Development build](#development-build) 
-    * [Recompile time](#recompile-time)
-  * [YES!](#yes)
-  * [Unit testing speed](#unit-testing-speed)
-  * [Closing thougts](#closing-thoughts)
-  * [Bonus: Lesson learned](#bonus-lesson-learned)
-
+In this article, we’re going to dive into bundle-size and compilation speed insights. We have seen various benchmarks and charts on conferences. What is the real impact on our application?
 
 Discussing how Ivy works is out of our scope. I recommend [inDepth article about its internals](https://indepth.dev/ivy-engine-in-angular-first-in-depth-look-at-compilation-runtime-and-change-detection/), for other changes read official blogposts for [Angular 9](https://blog.angular.io/version-9-of-angular-now-available-project-ivy-has-arrived-23c97b63cfa3) and [Angular 9.1](https://blog.angular.io/version-9-1-of-angular-now-available-typescript-3-8-faster-builds-and-more-eb292f989428).
 

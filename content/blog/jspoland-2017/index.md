@@ -1,10 +1,10 @@
 ---
 title: 'JS Poland 2017 - takeaways'
 author: [Piotr Lewandowski]
-tags: ['events']
+tags: ['events', 'javascript']
 cover: './cover.png'
 date: '2017-06-22'
-description: 'xyz'
+description: 'Notes from my visit at JS Poland'
 ---
 
 # JS Poland 2017 — Takeaways

@@ -1,10 +1,10 @@
 ---
 title: 'Angular - Translate Enums (i18n)'
 author: [Piotr Lewandowski]
-tags: ['angular']
+tags: ['angular', 'i18n']
 cover: './cover.jpeg'
 date: '2019-07-12'
-description: 'xyz'
+description: 'Built-in Angular translation engine supports only translation within templates. How to approach enums?'
 ---
 
 Built-in Angular translation engine supports (so-far) only translation within templates, so you might think it's not possible to translate parts of TypeScript like enums. 

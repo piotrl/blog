@@ -4,12 +4,8 @@ author: [Piotr Lewandowski]
 tags: ['typescript']
 cover: './cover.png'
 date: '2018-06-23'
-description: 'xyz'
+description: 'Deep dive into typing system to solve THE ultimate riddle'
 ---
-
-## Deep dive into typing system to solve THE ultimate riddle
-
-TL;DR; Source code of experiment. Solution.
 
 In this article, **we’re going to experiment with TypeScript 2.8 conditional and [mapping types](http://www.typescriptlang.org/docs/handbook/advanced-types.html#mapped-types)**. The goal is to create a type that would filter out all keys from your interface, that aren’t matching condition.
 
