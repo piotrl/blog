@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import _ from 'lodash';
 import urljoin from 'url-join';
-import { DiscussionEmbed } from 'disqus-react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostCard from '../components/post-card/post-card';
@@ -39,10 +38,6 @@ const BlogPostTemplate = (props: any) => {
   const siteUrl = props.data.site.siteMetadata.siteUrl;
   const shareUrl = urljoin(siteUrl, slug);
 
-  const disqusConfig = {
-    shortname: process.env.GATSBY_DISQUS_NAME,
-    config: { identifier: slug, title },
-  };
   return (
     <Layout>
       <SEO
@@ -99,7 +94,6 @@ const BlogPostTemplate = (props: any) => {
         <BlogPostComment
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
-          <DiscussionEmbed {...disqusConfig} />
         </BlogPostComment>
       </BlogPostDetailsWrapper>
 
