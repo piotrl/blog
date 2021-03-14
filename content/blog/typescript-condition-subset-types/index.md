@@ -53,7 +53,6 @@ type SubType = {
 }
 ```
 
-description: 'xyz'
 ---
 
 ## 📈Step by step to a solution
@@ -156,7 +155,6 @@ Pick<Person, 'id' | 'name'>;
 }
 ```
 
-description: 'xyz'
 ---
 
 ## 🎉Full Solution
@@ -186,7 +184,6 @@ type SubType<Base, Condition> = Pick<Base, {
 }[keyof Base]>;
 ```
 
-description: 'xyz'
 ---
 
 ## 🔥 Usages
@@ -235,7 +232,6 @@ type Callable = {
 
 If you find any other nice use cases, show us in a comment!
 
-description: 'xyz'
 ---
 
 ### 🤔 What this solution won’t solve?
@@ -257,7 +253,6 @@ type Nullable = SubType<{
 
 Also, I would not recommend using Object.keys() on such a structure as runtime result might be different than given type.
 
-description: 'xyz'
 ---
 
 ## Summary
@@ -270,4 +265,4 @@ The inspiration for this post comes from a [StackOverflow question ](https://sta
 
 **If you’ve learned something new, please:**
 
-→ [follow me **on Twitter (@constjs)](https://twitter.com/constjs) so you won’t miss future posts:
+→ [follow me on Twitter (@constjs)](https://twitter.com/constjs) so you won’t miss future posts:

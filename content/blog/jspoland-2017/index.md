@@ -19,9 +19,9 @@ JS Poland 2017 — Takeaways
 
 *Christian Heilmann ([video](https://www.youtube.com/watch?v=QOKWDAQSS_w), [slides](https://www.slideshare.net/cheilmann/progressive-web-apps-bringing-the-web-front-and-center), [twitter](https://twitter.com/codepo8))*
 
-*Progressive Web Apps (PWA) *— simply — are just websites built to be more like native apps. It’s not a new concept, but so far we were failing. Lack of native capabilities forced workarounds. Hardware and JS engines were not as fast as today. Everyone had to figure out their own definition of “Web App”.
+*Progressive Web Apps (PWA)* — simply — are just websites built to be more like native apps. It’s not a new concept, but so far we were failing. Lack of native capabilities forced workarounds. Hardware and JS engines were not as fast as today. Everyone had to figure out their own definition of “Web App”.
 
-Consider *PWA *as a set of principles to follow during building an app. Browsers already implement mechanisms that help to achieve them.
+Consider `PWA` as a set of principles to follow during building an app. Browsers already implement mechanisms that help to achieve them.
 
 “Progressive” comes from progressive enhancement. Once your users have more superpowers, your app should give them more possibilities. Without forgetting rest of users. We’re talking here about network capabilities, offline mode, screen size, budget devices.
 
@@ -29,11 +29,11 @@ Consider *PWA *as a set of principles to follow during building an app. Browsers
 
 * Native features — see [what web can do today](https://whatwebcando.today/)
 
-* Twitter Lite as great example of *PWA *([how it’s built](https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html))
+* Twitter Lite as great example of `PWA` ([how it’s built](https://blog.twitter.com/engineering/en_us/topics/open-source/2017/how-we-built-twitter-lite.html))
 
 * This trend has a strong support of Google and Microsoft in their stores. Apple seems to ignore it.
 
-![](https://cdn-images-1.medium.com/max/3342/1*LX0Gj4zNx2g3fYNYdN52_Q.png)
+![](./jspoland-pwa.png)
 
 ## Async Functions Awaiting You
 
@@ -57,7 +57,7 @@ Promises themselves have limitations like being greedy and accessing a value fro
 
 *Kacper Sokołowski ([slides](https://speakerdeck.com/kaapa/let-the-dinosaurs-finally-die-out-with-a-little-help-of-a-service-worker), [demo](https://github.com/kaapa-s/service-worker-ancient-demo), [twitter](https://twitter.com/kaapa_s))*
 
-How to implement *PWA *requirement — Network independence? Cache components necessary to run your application. Well-known options are local storage, cookies, indexedDB and now… service workers.
+How to implement `PWA`*requirement — Network independence? Cache components necessary to run your application. Well-known options are local storage, cookies, indexedDB and now… service workers.
 
 ### Service workers…
 
@@ -90,9 +90,7 @@ They encouraged native developers to write [JavaScript](https://hackernoon.com/t
 The success of *Pudelek app* is considered in following aspects:
 
 * For developers — shared codebase means one common knowledge, hot reloading improved development flow (4s vs 4min of compilation)
-
 * For business — 30% revenue boots, faster development
-
 * For users — Maintained 60fps even on weak devices, fewer crash reports (From 97% to 98%).
 
 ### Ending note
@@ -147,7 +145,7 @@ Progressive Web Apps are green octagon and meant to be “the next big thing”,
 
 If it’s framework agnostic, how to actually implement it? Look for inspiration at [*HackerNews PWA](https://hnpwa.com/)* — A spiritual successor to *TodoMVC*.
 
-What about other popular options? I highly recommend [slides](http://slides.com/webmax/mobileweb-jspoland). Maxim covered in great details differences between Ionic, NativeScript, React Native and *PWA *ideology.
+What about other popular options? I highly recommend [slides](http://slides.com/webmax/mobileweb-jspoland). Maxim covered in great details differences between Ionic, NativeScript, React Native and *PWA* ideology.
 
 ## RxJS all things!
 

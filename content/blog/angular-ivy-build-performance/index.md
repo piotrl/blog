@@ -39,7 +39,7 @@ Angular team suggest expected values:
 
 I’m using full build metric for the general sum of improvements delivered by the new compiler.
 
-![](https://cdn-images-1.medium.com/max/1024/1*A6AJvl-uP-fokP8KvxCn_Q.png)<figcaption>Full production bundle size Values are Megabytes.</figcaption>
+![](./es5-bundle-size.png)<figcaption>Full production bundle size Values are Megabytes.</figcaption>
 
 #### gzipped value does not knock down
 
@@ -47,7 +47,7 @@ Full build metrics does not relief what is going on under the hood. List of file
 
 Let’s split comparison:
 
-![](https://cdn-images-1.medium.com/max/1024/1*0Cj7yzret3T-yNwKgn03Pw.png)<figcaption>Comparison of main.js and sum of lazy loaded chunks. Values are Megabytes.</figcaption>
+![](./main-chunks-size.png)<figcaption>Comparison of main.js and sum of lazy loaded chunks. Values are Megabytes.</figcaption>
 
 #### 🤯 Why is main.js bigger?
 
@@ -65,7 +65,7 @@ Utility libraries have nothing to do with Ivy, the same with Angular Services. W
 
 Let’s go even deeper and compare only those:
 
-![](https://cdn-images-1.medium.com/max/1024/1*3WmxyHoaAF9RKrsQPnA4Mg.png)<figcaption>Angular library (left), our in-house <a href="https://barista.dynatrace.com/components">barista components library</a>. Values are Kilobytes.</figcaption>
+![](./core-component-library-size.png)<figcaption>Angular library (left), our in-house <a href="https://barista.dynatrace.com/components">barista components library</a>. Values are Kilobytes.</figcaption>
 
 That solves a riddle. For Angular 9, each Angular library — framework itself, component libraries, NgRx — needs to be re-compiled now with ngcc tool to run with Ivy runtime. ngcc re-compiles node\_modules libs with Ivy compiler. This process might make components little bigger.
 
@@ -84,7 +84,7 @@ Is it bad? Well, on chart — maybe. But it’s temporary situation. Initial
 
 #### Production build
 
-![](https://cdn-images-1.medium.com/max/1024/1*L-eq04ysnLRghuqnAaBQGQ.png)<figcaption>Production build time in minutes.</figcaption>
+![](./speed-build-prod.png)<figcaption>Production build time in minutes.</figcaption>
 
 Differential loading (ES2015+ES5) build used to be slower for obvious reasons, it needed to generate two packages of the same code. Ivy helps with both builds, saving 1 minute of build time — that’s a nice improvement. Moreover, it reduces gap:
 
@@ -95,7 +95,7 @@ Differential loading (ES2015+ES5) build used to be slower for obvious reasons, i
 
 #### Development build
 
-![](https://cdn-images-1.medium.com/max/1024/1*L3MACuwTHbj-lQiAIVBFCA.png)<figcaption>Development build time in minutes.</figcaption>
+![](./speed-build-dev.png)<figcaption>Development build time in minutes.</figcaption>
 
 For development build, there is no differential loading. We compile ES2015 or ES5, never both. Here ES2015 is proven to be 10–20s faster.
 
@@ -108,7 +108,7 @@ After enabling Ivy, we see:
 
 #### Recompile time
 
-![](https://cdn-images-1.medium.com/max/1024/1*hjyMCr6vvw3qnZaf5_vCaA.png)<figcaption>change re-compilation time (minutes)</figcaption>
+![](./speed-build-dev-recompile.png)<figcaption>change re-compilation time (minutes)</figcaption>
 
 Re-compilation time depends heavily on the place you’re editing. Smaller, lazy-loaded modules are re-compiling faster than modules inside main.js.
 
@@ -127,7 +127,7 @@ Those results are worth waiting for, especially we’re at the process of migrat
 
 Happily, in Angular 9.1, ngcc is smart enough to run on-demand, not every compilation and not every post-install change.
 
-![](https://cdn-images-1.medium.com/max/1024/1*KwwOfH599wSlDFXfRIDTUA.png)<figcaption>development build time of first run (minutes)</figcaption>
+![](./speed-build-ngcc.png)<figcaption>development build time of first run (minutes)</figcaption>
 
 Overhead is going to be visible only on first run after adding/changing dependencies.
 
@@ -143,7 +143,7 @@ I haven’t seen any difference for our set-up just by enabling/disabling Ivy.
 You might get impression that results are not worth upgrade.   
 No! Nothing like that. ngcc adds some overhead both size and speed, but:
 
-![](https://cdn-images-1.medium.com/max/1024/1*D10joa371AhyDXkmZhS70Q.png)
+![](./ivy-enabler.png)
 
 After having a thought, I’m happy bundle size is just not worse during migration period. We already gained build time benefits.
 
@@ -161,12 +161,10 @@ The front-end toolset is complex. Even minor dependency might grow your bundle o
 
 Angular team tries to save every bit of code in runtime, whereas e.g. sass-loader might add megabytes of duplicated CSS just because of a simple mistake in the configuration.
 
-{% tweet 1236366698430828546 %}
-
 What about your projects? Did you perform similar benchmarks? I’d be happy to hear about your results.
 
 **If you’ve learned something new, please:**
 
-**→** [**follow me** on Twitter (@constjs)](https://twitter.com/constjs) so you won’t miss future posts:
+→ [follow me on Twitter (@constjs)](https://twitter.com/constjs) so you won’t miss future posts:
 
 * * *
