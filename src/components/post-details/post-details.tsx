@@ -3,13 +3,13 @@ import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import _ from 'lodash';
 import {
-  PostDetailsWrapper,
-  PostTitle,
   PostDate,
-  PostPreview,
-  PostDescriptionWrapper,
   PostDescription,
+  PostDescriptionWrapper,
+  PostDetailsWrapper,
+  PostPreview,
   PostTags,
+  PostTitle,
 } from './post-details.style';
 
 type PostDetailsProps = {
@@ -85,10 +85,17 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
         ) : (
           ''
         )}
-        <PostDescription
-          dangerouslySetInnerHTML={{ __html: description }}
-          className="post_des"
-        />
+
+        {typeof description === 'string'
+          ? <PostDescription
+            dangerouslySetInnerHTML={{ __html: description }}
+            className='post_des'
+          />
+          : <PostDescription className='post_des'>
+            {description}
+          </PostDescription>
+        }
+
         {tags == null ? null : (
           <PostTags>
             {tags.map((tag, index) => (
