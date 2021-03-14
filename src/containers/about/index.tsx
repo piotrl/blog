@@ -22,7 +22,7 @@ const About: React.FunctionComponent<AboutProps> = () => {
       }
       speaking: file(absolutePath: { regex: "/speaking.jpg/" }) {
         childImageSharp {
-          fluid(maxWidth: 570, quality: 90) {
+          fluid(maxWidth: 570, maxHeight: 760, quality: 90) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
