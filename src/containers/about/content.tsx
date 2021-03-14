@@ -30,7 +30,7 @@ const AboutContent: React.FunctionComponent<AboutContentProps> = () => {
         I'm front-end guy, however I started my career from backend environment. And at the moment, I found my niche in
         developing low-level architecture of Web Applications, barely touching component styling recently.
       </p>
-      <p>I'm strong fan of how TypeScript has changed the Web development.</p>
+      <p>I'm strict fan of how TypeScript has changed the Web development.</p>
       <p>
         👉 Check my <a href='http://github.com/piotrl'>GitHub</a> and <a
         href='https://stackoverflow.com/users/2757140/piotr-lewandowski'>StackOverflow</a>.
@@ -43,12 +43,11 @@ const AboutContent: React.FunctionComponent<AboutContentProps> = () => {
       <h2>I speak</h2>
 
       <p>
-        I do deep-dive presentations as developer for developer, sharing lesson learned.
-        Find my slides at .
+        I do deep-dive presentations as developer for developer, sharing lesson learned. Internal ones and public on
+        meetups. I tend to avoid conferences though... 20min presentations are not my cup of tea.
       </p>
       <p>
-        Outside of speaking myself. I used to organise meetup for IT students, called PonadProgram (eng: "Above the
-        line") - helping younglings to be attracted to IT and presenting them how it looks in reality.
+        Outside of speaking myself. I used to organise meetup for IT students, called `PonadProgram` - helping younglings to be attracted by IT and presenting them how it looks in reality.
         We worked for 2 years, having 10 topics covered.
       </p>
       <p>
@@ -58,9 +57,9 @@ const AboutContent: React.FunctionComponent<AboutContentProps> = () => {
       <h2>I write</h2>
 
       <p>
-        You might find some of my writings published on Medium, inDpeth or dev.to, having more than 100 000 views
-        together.
-        Some of my writing were translated to various languages: English, Polish, Japanese.
+        You might find some of my writings published on Medium, inDpeth or dev.to, <strong>having more than 100 000
+        views</strong> together.
+        Some of my writing were translated to various languages: <strong>English, Polish, Japanese</strong>.
       </p>
 
       <p>

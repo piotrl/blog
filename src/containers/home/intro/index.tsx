@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import SocialProfile from '../../../components/social-profile/social-profile';
 import {
@@ -66,7 +66,7 @@ const Intro: React.FunctionComponent<IntroProps> = () => {
         <IntroTitle>
           Hey! I’m <b>{author}</b>
         </IntroTitle>
-        <Desciption>{about}</Desciption>
+        <Desciption>{about} <br /><Link to={'/about'}>👉 Learn more</Link></Desciption>
         <SocialProfile items={SocialLinks} />
       </IntroInfo>
     </IntroWrapper>
