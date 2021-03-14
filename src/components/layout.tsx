@@ -28,7 +28,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         {/*<InstagramShowcase />*/}
         {/*<Newsletter />*/}
         <Footer>
-          Copyright &copy; {new Date().getFullYear()}&nbsp;
+          Copyright &copy; 2017 - {new Date().getFullYear()}&nbsp;
           Piotr Lewandowski
         </Footer>
         <ScrollToTop
