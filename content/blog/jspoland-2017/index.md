@@ -1,15 +1,11 @@
 ---
-title: 'JS Poland 2017 - takeaways'
+title: 'JS Poland 2017 — Takeaways'
 author: [Piotr Lewandowski]
 tags: ['events', 'javascript']
 cover: './cover.png'
 date: '2017-06-22'
 description: 'Notes from my visit at JS Poland'
 ---
-
-# JS Poland 2017 — Takeaways
-
-JS Poland 2017 — Takeaways
 
 ### Notes from [the conference](http://www.js-poland.pl). Based on 20 hand-written pages. Strong or misleading interpretations are all on me.
 

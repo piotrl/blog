@@ -139,10 +139,9 @@ We’re close to a solution now.
 Now we’re ready to build our final object. We just use `Pick`, which iterates over provided key names and extracts the associated type to the new object.
 
 ```typescript
-
+type SubType<Base, Condition> = 
+        Pick<Base, AllowedNames<Base, Condition>>
 ```
-    type SubType<Base, Condition> = 
-            Pick<Base, AllowedNames<Base, Condition>>
 
 Where Pick is a built-in mapped type, provided in TypeScript since 2.1:
 

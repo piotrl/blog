@@ -18,16 +18,16 @@ I’m going to use Observable to simulate asynchronous operations. It is not lim
 To access variables in the callback, we have to be in its function scope!
 
 ```typescript
-  it('should be green', () => {
-    anyObservable()
-      .subscribe((el) => {
-        expect(el).toBeTruthy();
-      });
-  });
+it('should be green', () => {
+  anyObservable()
+    .subscribe((el) => {
+      expect(el).toBeTruthy();
+    });
+});
 ```
 
 It looks innocent, sometimes even works! When it does not work? Simply when anyObservable goes async and calls `subscribe()` with small delay. In above example, test is always green then, because test executes faster than `subscribe()` callback is called. It’s also green when the value does not match `expect()`.
-> It’s simply never checked. Just like [volkswagen engines emissions test](https://en.wikipedia.org/wiki/Volkswagen_emissions_scandal) — always green.
+> Heard about [volkswagen engines emissions test](https://en.wikipedia.org/wiki/Volkswagen_emissions_scandal) scandal? — better to avoid always green tests.
 
 ### When we’re handling asynchronous operation?
 
@@ -36,13 +36,13 @@ Think of any DOM event listeners, HTTP calls, Websockets, animations, own state 
 To overcome this, frameworks like Jest or Karma provide `done()` function. It’s a marker for test runners not to finish the test until we call it.
 
 ```typescript
-  it('should be green for async operation', (done) => {
-    timeout(500)
-      .subscribe((el) => {
-        expect(el).toBeTruthy();
-        done();
-      });
-  });
+it('should be green for async operation', (done) => {
+  timeout(500)
+    .subscribe((el) => {
+      expect(el).toBeTruthy();
+      done();
+    });
+});
 ```
 
 Bingo, isn’t it? So, why do I have the intention to discourage using `done()`?
@@ -70,17 +70,17 @@ As you see, even when some situation goes wrong, test is green. When we use done
 When callbacks are **synchronous**, we don’t really need to use expect() inside callback.
 
 ```typescript
-  it('should be green for sync', () => {
-    // given
-    const result = [];
-  
-    // when
-    of(1, 2)
-      .subscribe((el) => result.push(el));
-  
-    // then
-    expect(result).toEqual([1, 2]);
-  });
+it('should be green for sync', () => {
+  // given
+  const result = [];
+
+  // when
+  of(1, 2)
+    .subscribe((el) => result.push(el));
+
+  // then
+  expect(result).toEqual([1, 2]);
+});
 ```
 
 1. **When Observable emits 1000x times** in loop by mistake = test fails **✅**
@@ -104,17 +104,17 @@ Asynchronous is a side effect, same as a system time clock. We need to avoid the
 In Angular, we have absolute genius mock. It makes everything synchronous and controlled from the tests — fakeAsync().
 
 ```typescript
-  it('should be green for async', fakeAsync(() => {
-    // given
-    const result = [];
-  
-    // when
-    interval(1000).subscribe((el) => result.push(el));
-    tick(2000);
-  
-    // then
-    expect(result).toEqual([0, 1]);
-  }));
+it('should be green for async', fakeAsync(() => {
+  // given
+  const result = [];
+
+  // when
+  interval(1000).subscribe((el) => result.push(el));
+  tick(2000);
+
+  // then
+  expect(result).toEqual([0, 1]);
+}));
 ```
 
 ☝️ Above, we have an interval(1000) emitting new increment every second starting from 0. Typically, **we don’t want to wait real 2 seconds** to check conditions. For 10 000 tests it means 5 hours of waiting. 
