@@ -17,21 +17,21 @@ import {
 
 type IntroProps = {};
 
-const SocialLinks = [
+export const SocialLinks = [
   {
     icon: <IoLogoLinkedin />,
     url: 'https://www.linkedin.com/in/piotr--lewandowski/',
-    tooltip: 'LinkedIn',
+    tooltip: 'LinkedIn - Piotr Lewandowski',
   },
   {
     icon: <IoLogoTwitter />,
     url: 'https://twitter.com/constjs',
-    tooltip: 'Twitter',
+    tooltip: 'Twitter - @constjs',
   },
   {
     icon: <IoLogoGithub />,
     url: 'http://github.com/piotrl',
-    tooltip: 'Github',
+    tooltip: 'Github - @piotrl',
   },
 ];
 
