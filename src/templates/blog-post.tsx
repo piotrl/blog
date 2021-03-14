@@ -1,42 +1,30 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import _ from 'lodash';
-import urljoin from 'url-join';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PostCard from '../components/post-card/post-card';
 import PostDetails from '../components/post-details/post-details';
+import { IoLogoReddit, IoLogoTwitter } from 'react-icons/io';
 import {
-  FacebookShareButton,
-  TwitterShareButton,
-  PinterestShareButton,
-  RedditShareButton,
-} from 'react-share';
-import {
-  IoLogoFacebook,
-  IoLogoTwitter,
-  IoLogoPinterest,
-  IoLogoReddit,
-} from 'react-icons/io';
-import {
+  BlogPostComment,
   BlogPostDetailsWrapper,
-  RelatedPostWrapper,
-  RelatedPostItems,
-  RelatedPostTitle,
-  RelatedPostItem,
   BlogPostFooter,
   PostShare,
   PostTags,
-  BlogPostComment,
+  RelatedPostItem,
+  RelatedPostItems,
+  RelatedPostTitle,
+  RelatedPostWrapper,
 } from './templates.style';
 
 const BlogPostTemplate = (props: any) => {
   const post = props.data.markdownRemark;
   const { edges } = props.data.allMarkdownRemark;
   const title = post.frontmatter.title;
-  const slug = post.fields.slug;
-  const siteUrl = props.data.site.siteMetadata.siteUrl;
-  const shareUrl = urljoin(siteUrl, slug);
+
+  const twitterDiscussions = `https://mobile.twitter.com/search?q=${encodeURIComponent(title)}`;
+  const redditDiscussions = `https://www.reddit.com/search/?q=${encodeURIComponent(title)}`;
 
   return (
     <Layout>
@@ -70,25 +58,13 @@ const BlogPostTemplate = (props: any) => {
             </PostTags>
           )}
           <PostShare>
-            <span>Share This:</span>
-            <FacebookShareButton url={shareUrl} quote={post.excerpt}>
-              <IoLogoFacebook />
-            </FacebookShareButton>
-            <TwitterShareButton url={shareUrl} title={title}>
-              <IoLogoTwitter />
-            </TwitterShareButton>
-            <PinterestShareButton
-              url={shareUrl}
-              media={urljoin(siteUrl, post.frontmatter.cover.publicURL)}
-            >
-              <IoLogoPinterest />
-            </PinterestShareButton>
-            <RedditShareButton
-              url={shareUrl}
-              title={`${post.frontmatter.title}`}
-            >
-              <IoLogoReddit />
-            </RedditShareButton>
+            <span>Community discussions:</span>
+            <a href={twitterDiscussions} target='_blank' rel='noopener noreferrer'>
+              <IoLogoTwitter /> on twitter
+            </a>
+            <a href={redditDiscussions} target='_blank' rel='noopener noreferrer'>
+              <IoLogoReddit /> on reddit
+            </a>
           </PostShare>
         </BlogPostFooter>
         <BlogPostComment

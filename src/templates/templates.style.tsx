@@ -251,11 +251,10 @@ export const PostShare = styled.div`
   > span {
     flex-shrink: 0;
   }
-  > div,
-  .react-share__ShareButton {
+  > div, a {
     cursor: pointer;
     margin-left: 25px;
-    font-size: 22px;
+    border-bottom: ${themeGet('colors.primary', '#D10068')} 1px dashed;
     outline: 0;
     color: ${themeGet('colors.textColor', '#292929')};
     transition: 0.15s ease-in-out;
@@ -265,9 +264,6 @@ export const PostShare = styled.div`
     }
     &:hover {
       color: ${themeGet('colors.primary', '#D10068')};
-    }
-    svg {
-      display: block;
     }
   }
 `;

@@ -1,5 +1,5 @@
 ---
-title: 'Angular with Ivy - Build performance review'
+title: 'Angular with Ivy — Build performance review'
 author: [Piotr Lewandowski]
 tags: ['angular', 'ivy', 'review']
 cover: './cover.png'
