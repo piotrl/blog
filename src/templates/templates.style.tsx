@@ -231,6 +231,20 @@ export const BlogPostFooter = styled.div`
   }
 `;
 
+export const BlogPostAuthor = styled.div`
+  margin: 0 0 0 auto;
+  width: 58%;
+  max-width: 100%;
+  padding-top: 30px;
+  @media (max-width: 990px) {
+    padding-top: 20px;
+    width: 100%;
+  }
+  &.center {
+    margin: 0 auto;
+  }
+`;
+
 export const BlogPostComment = styled.div`
   margin: 0 0 0 auto;
   width: 58%;

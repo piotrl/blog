@@ -7,6 +7,7 @@ import PostCard from '../components/post-card/post-card';
 import PostDetails from '../components/post-details/post-details';
 import { IoLogoReddit, IoLogoTwitter } from 'react-icons/io';
 import {
+  BlogPostAuthor,
   BlogPostComment,
   BlogPostDetailsWrapper,
   BlogPostFooter,
@@ -17,11 +18,15 @@ import {
   RelatedPostTitle,
   RelatedPostWrapper,
 } from './templates.style';
+import AuthorMeta from './blog-post-meta';
 
 const BlogPostTemplate = (props: any) => {
   const post = props.data.markdownRemark;
   const { edges } = props.data.allMarkdownRemark;
   const title = post.frontmatter.title;
+  const avatar = props.data.avatar.childImageSharp.fluid;
+  const author = post.frontmatter.author;
+  const about = props.data.site.siteMetadata.about;
 
   const twitterDiscussions = `https://mobile.twitter.com/search?q=${encodeURIComponent(title)}`;
   const redditDiscussions = `https://www.reddit.com/search/?q=${encodeURIComponent(title)}`;
@@ -67,6 +72,13 @@ const BlogPostTemplate = (props: any) => {
             </a>
           </PostShare>
         </BlogPostFooter>
+        <BlogPostAuthor>
+          <RelatedPostTitle>Author</RelatedPostTitle>
+          {avatar && author
+            ? <AuthorMeta image={avatar} name={author} description={about} />
+            : ''
+          }
+        </BlogPostAuthor>
         <BlogPostComment
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
@@ -105,6 +117,14 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteUrl
+        about
+      }
+    }
+    avatar: file(absolutePath: { regex: "/author.jpg/" }) {
+      childImageSharp {
+        fluid(maxWidth: 210, maxHeight: 210, quality: 90) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -119,6 +139,7 @@ export const pageQuery = graphql`
         date(formatString: "DD MMM, YYYY")
         description
         tags
+        author
         cover {
           publicURL
           childImageSharp {
