@@ -7,7 +7,7 @@ module.exports = {
     title: `by Piotr Lewandowski`,
     author: `Piotr`,
     about: `JavaScript performance-solver at @Dynatrace. JavaScript trouble-maker on my own.`,
-    description: `A personal blog`,
+    description: `Personal blog on TypeScript, Angular, tools and Web Development engineering | by Piotr Lewandowski`,
     siteUrl: `https://piotrl.net`,
   },
   plugins: [
@@ -77,10 +77,24 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,//`ADD YOUR TRACKING ID HERE`,
-        respectDNT: true
+        trackingIds: [
+          process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        ],
+        gtagConfig: {
+          anonymize_ip: false,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          exclude: [],
+        },
+
       },
     },
     // {
