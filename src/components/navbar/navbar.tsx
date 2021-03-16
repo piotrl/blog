@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
 import { IoIosSearch, IoIosClose } from 'react-icons/io';
 import { DrawerProvider } from '../drawer/drawer-context';
 import Menu from './menu';
@@ -7,14 +6,13 @@ import MobileMenu from './mobile-menu';
 import SearchContainer from '../../containers/search/search';
 import HeaderWrapper, {
   NavbarWrapper,
-  Logo,
   MenuWrapper,
   NavSearchButton,
   NavSearchWrapper,
   SearchCloseButton,
   NavSearchFromWrapper,
 } from './navbar.style';
-import LogoImage from '../../images/logo.png';
+import LogoImage from '../../images/author.jpg';
 
 type NavbarProps = {
   className?: string;

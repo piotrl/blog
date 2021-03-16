@@ -245,10 +245,25 @@ export const DrawerHead = styled.div`
 `;
 
 export const DrawerLogo = styled.div`
-  max-width: 110px;
+  max-width: 140px;
   padding-left: 30px;
   img {
     max-width: 100%;
+    max-height: 32px;
+    border-radius: 50%;
+  }
+
+  span {
+    padding-left: 8px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: ${themeGet('primary', '#D10068')};
   }
 `;
 

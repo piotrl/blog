@@ -52,6 +52,7 @@ const MobileMenu: React.FunctionComponent<MobileMenuProps> = ({
             <DrawerLogo>
               <Link to="/">
                 <img src={logo} alt="logo" />
+                <span>Piotr Lewandowski</span>
               </Link>
             </DrawerLogo>
             <DrawerClose onClick={toggleDrawer}>
