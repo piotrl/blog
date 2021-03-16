@@ -1,6 +1,6 @@
-import React from "react"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql, useStaticQuery } from 'gatsby';
 
 type SEOProps = {
   description?: string
@@ -8,6 +8,7 @@ type SEOProps = {
   meta?: any
   keywords?: any
   title: string
+  image?: any;
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
@@ -16,12 +17,14 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   meta,
   keywords,
   title,
+  image,
 }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
+            siteUrl
             title
             description
             author
@@ -31,7 +34,11 @@ const SEO: React.FunctionComponent<SEOProps> = ({
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
+  const metaImage = image && image.src
+      ? `${site.siteMetadata.siteUrl}${image.src}`
+      : null
+
 
   return (
     <Helmet
@@ -58,10 +65,6 @@ const SEO: React.FunctionComponent<SEOProps> = ({
           content: `website`,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
           name: `twitter:creator`,
           content: site.siteMetadata.author,
         },
@@ -74,6 +77,33 @@ const SEO: React.FunctionComponent<SEOProps> = ({
           content: metaDescription,
         },
       ]
+        .concat(
+          image
+            ? [
+              {
+                property: "og:image",
+                content: metaImage,
+              },
+              {
+                property: "og:image:width",
+                content: image.width,
+              },
+              {
+                property: "og:image:height",
+                content: image.height,
+              },
+              {
+                name: "twitter:card",
+                content: "summary_large_image",
+              },
+            ]
+            : [
+              {
+                name: "twitter:card",
+                content: "summary",
+              },
+            ]
+        )
         .concat(
           keywords.length > 0
             ? {

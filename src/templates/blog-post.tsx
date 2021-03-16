@@ -23,10 +23,9 @@ import AuthorMeta from './blog-post-meta';
 const BlogPostTemplate = (props: any) => {
   const post = props.data.markdownRemark;
   const { edges } = props.data.allMarkdownRemark;
-  const title = post.frontmatter.title;
   const avatar = props.data.avatar.childImageSharp.fluid;
-  const author = post.frontmatter.author;
   const about = props.data.site.siteMetadata.about;
+  const { title, author, cover, coverWide } = post.frontmatter;
 
   const twitterDiscussions = `https://mobile.twitter.com/search?q=${encodeURIComponent(title)}`;
   const redditDiscussions = `https://www.reddit.com/search/?q=${encodeURIComponent(title)}`;
@@ -36,15 +35,16 @@ const BlogPostTemplate = (props: any) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        image={coverWide.childImageSharp.fluid}
       />
       <BlogPostDetailsWrapper>
         <PostDetails
           title={post.frontmatter.title}
           date={post.frontmatter.date}
           preview={
-            post.frontmatter.cover == null
+            cover == null
               ? null
-              : post.frontmatter.cover.childImageSharp.fluid
+              : cover.childImageSharp.fluid
           }
           description={post.html}
           imagePosition="left"
@@ -144,6 +144,14 @@ export const pageQuery = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 570, maxHeight: 760, quality: 90) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
+        coverWide: cover {
+          publicURL
+          childImageSharp {
+            fluid(maxWidth: 570, quality: 90) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
