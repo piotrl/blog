@@ -10,7 +10,7 @@ const HeaderWrapper = styled.header`
 export const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 1px solid ${themeGet('borderColor', '#DBDBDB')};
   padding: 30px 75px;
   background-color: #fff;
