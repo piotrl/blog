@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `const js =`,
+    title: `by Piotr Lewandowski`,
     author: `Piotr`,
     about: `JavaScript performance-solver at @Dynatrace. JavaScript trouble-maker on my own.`,
     description: `A personal blog`,

@@ -8,7 +8,7 @@ const AboutPage: React.FunctionComponent<PageProps> = () => {
   return (
     <Layout>
       <SEO
-        title="About - Piotr Lewandowski"
+        title="About"
         description="JavaScript performance-solver at @Dynatrace. JavaScript trouble-maker on my own."
       />
 
