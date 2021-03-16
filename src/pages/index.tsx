@@ -32,7 +32,7 @@ const IndexPage: React.FC<IndexPageProps> = (props) => {
   return (
     <Layout>
       <SEO
-        title="@constjs - Blog"
+        title="@constjs"
         description={data.site.siteMetadata.description}
       />
       <PersonalBlog />
