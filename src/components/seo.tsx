@@ -9,6 +9,7 @@ type SEOProps = {
   keywords?: any
   title: string
   image?: any;
+  pathname?: string;
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
@@ -18,6 +19,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   keywords,
   title,
   image,
+  pathname,
 }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -39,6 +41,9 @@ const SEO: React.FunctionComponent<SEOProps> = ({
       ? `${site.siteMetadata.siteUrl}${image.src}`
       : null
 
+  const canonical = pathname
+    ? `${site.siteMetadata.siteUrl}${pathname}`
+    : null;
 
   return (
     <Helmet
@@ -47,6 +52,16 @@ const SEO: React.FunctionComponent<SEOProps> = ({
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      link={
+        canonical
+          ? [
+            {
+              rel: "canonical",
+              href: canonical,
+            },
+          ]
+          : []
+      }
       meta={[
         {
           name: `description`,

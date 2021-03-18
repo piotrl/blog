@@ -36,6 +36,7 @@ const BlogPostTemplate = (props: any) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
         image={coverWide.childImageSharp.fluid}
+        pathname={post.fields.slug}
       />
       <BlogPostDetailsWrapper>
         <PostDetails
