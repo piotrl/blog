@@ -4,7 +4,7 @@ author: [Piotr Lewandowski]
 tags: ['angular', 'testing', 'performance']
 date: '2021-04-09'
 cover: './cover.png'
-draft: true
+draft: false
 description: 'Go from 20s -> 50ms for testing huge components suites. Is shallow testing a silver bullet then?'
 ---
 
@@ -37,15 +37,15 @@ TestBed.configureTestingModule(
     declarations: [
       ComponentWeTest,
     ],
-    imports: [
-      // only TestingModules
-      // for direct dependencies of ComponentWeTest
-    ],
-    providers: [
-      // only mocks for direct dependencies of ComponentWeTest
-      // or mocks that we modify for test behaviour
-    ],
-  });
+      imports: [
+        // only TestingModules
+        // for direct dependencies of ComponentWeTest
+      ],
+      providers: [
+        // only mocks for direct dependencies of ComponentWeTest
+        // or mocks that we modify for test behaviour
+      ],
+    });
 ```
 
 ## How it looks like?
