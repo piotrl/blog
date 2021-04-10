@@ -24,7 +24,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
       }
       allMarkdownRemark(
         sort: { fields: [frontmatter___date], order: DESC }
-        limit: 5
+        limit: 10
       ) {
         totalCount
         edges {
