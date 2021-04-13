@@ -33,7 +33,7 @@ TestBed.configureTestingModule({
 
 Typically, this removes lots of setup code and unrelated mocks from the test suite.
 
-## How to recognize optimization potential?
+## When to use Shallow Testing?
 
 The initialization of the test can take much more time and resources than the test itself. The most costly part of it is resolving **Dependency Injection** tree from all listed modules and **compilation** of all child components.
 
@@ -106,6 +106,7 @@ This is great for precise integration testing.
 
 
 * [Nested components tests](https://angular.io/guide/testing-components-scenarios#nested-component-tests) - official Angular docs includes chapter on Shallow Testing
+* [Testing Angular components with shallow-render](https://medium.com/@getsaf/testing-angular-components-with-shallow-render-9334d16dc2e3) - Show-case of issues shallow renderer solve and introduction to utility library
 * [Why you shouldn't use NO ERRORS SCHEMA](https://medium.com/@fivedicephoto/why-you-shouldnt-use-no-errors-schema-in-angular-unit-tests-cdd478c30782) - article mentioning potential drawbacks of these practices
 * [Why I Never Use Shallow Rendering](https://kentcdodds.com/blog/why-i-never-use-shallow-rendering) - Kent C. Dodds suggests here drawbacks of React Shallow testing
 * [Why I Always Use Shallow Rendering](https://hackernoon.com/why-i-always-use-shallow-rendering-a3a50da60942) - Anton Korzunov answers above post of Kent with counter arguments
