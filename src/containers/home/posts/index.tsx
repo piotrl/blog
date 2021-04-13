@@ -34,7 +34,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
               slug
             }
             frontmatter {
-              date(formatString: "DD [<span>] MMM [</span>]")
+              date(formatString: "DD [<span>] MMM YYYY [</span>]")
               title
               description
               tags
@@ -58,7 +58,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
 
   return (
     <BlogPostsWrapper>
-      <SecTitle>Leatest Stories</SecTitle>
+      <SecTitle>Latest Stories</SecTitle>
       {posts.map(({ node }: any) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
