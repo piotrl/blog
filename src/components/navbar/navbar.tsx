@@ -12,7 +12,7 @@ import HeaderWrapper, {
   SearchCloseButton,
   NavSearchFromWrapper,
 } from './navbar.style';
-import LogoImage from '../../images/author.jpg';
+import LogoImage from '../../images/author.png';
 
 type NavbarProps = {
   className?: string;
