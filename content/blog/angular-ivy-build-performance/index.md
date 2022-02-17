@@ -1,7 +1,7 @@
 ---
 title: 'Angular with Ivy — Build performance review'
 author: [Piotr Lewandowski]
-tags: ['angular', 'ivy', 'performance']
+tags: ['angular', 'ivy', 'build, 'performance']
 cover: './cover.png'
 date: '2020-04-14'
 description: 'We have seen various benchmarks and charts on conferences. What is the real impact on our application?'
