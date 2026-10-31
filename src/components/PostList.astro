@@ -1,7 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import { formatDate, type Post, postUrl } from '../lib/posts';
-import TagList from './TagList.astro';
+import { type Post, postUrl } from '../lib/posts';
 
 interface Props {
   posts: Post[];
@@ -14,18 +12,10 @@ const { posts } = Astro.props;
   {
     posts.map(post => (
       <li>
-        {post.data.cover && (
-          <a href={postUrl(post)} tabindex="-1" aria-hidden="true">
-            <Image src={post.data.cover} width={170} height={170} fit="cover" alt="" />
-          </a>
-        )}
+        <time datetime={post.data.date.toISOString()}>{post.data.date.getFullYear()}</time>
         <div>
-          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-          <h2>
-            <a href={postUrl(post)}>{post.data.title}</a>
-          </h2>
+          <a href={postUrl(post)}>{post.data.title}</a>
           <p>{post.data.description}</p>
-          <TagList tags={post.data.tags} />
         </div>
       </li>
     ))

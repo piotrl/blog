@@ -6,13 +6,13 @@ import Base from '../layouts/Base.astro';
 import { person, withContext } from '../lib/schema';
 
 const description =
-  'Piotr Lewandowski is a Product Architect at Dynatrace in Gdańsk, working on frontend architecture, observability and practical automation.';
+  'Piotr Lewandowski is a Product Architect at Dynatrace in Gdańsk, working on frontend architecture, observability, and working with people and AI agents.';
 ---
 
 <Base title="About" {description} jsonLd={withContext({ '@type': 'ProfilePage', mainEntity: person(Astro.site!) })}>
   <article class="post about">
     <header>
-      <h1>Hi, I’m Piotr</h1>
+      <h1>About me</h1>
     </header>
     <Image src={speaking} width={570} alt="Piotr speaking at a meetup" class="cover" loading="eager" />
     <div class="prose">
@@ -26,6 +26,11 @@ const description =
         Along the way I’ve supported products shipped both as SaaS and on-premise, and run long-term migrations of
         software that had to keep working for customers the whole time.
       </p>
+      <p>
+        For five years I led a frontend team as its team captain: mentoring the people who came through it, growing
+        their contributions and keeping the team’s long-running projects healthy. Alongside that, I taught frontend at
+        bootcamps and ran workshops for professionals.
+      </p>
 
       <h2>What I work on</h2>
       <ul>
@@ -38,8 +43,8 @@ const description =
           they teach about the design.
         </li>
         <li>
-          <strong>Practical automation and AI workflows.</strong> Small tools built like production code, and AI agents
-          used where they save real time, with a human kept in front of anything irreversible.
+          <strong>Working with people and agents.</strong> Clear specs, context and feedback loops that both teams and AI
+          agents can act on, with a human kept in front of anything irreversible.
         </li>
       </ul>
 

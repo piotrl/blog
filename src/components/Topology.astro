@@ -1,0 +1,150 @@
+---
+import { getImage } from 'astro:assets';
+import avatar from '../../content/assets/author.png';
+import { random } from '../lib/seed';
+
+interface Props {
+  sources: string[];
+  note?: string;
+}
+
+const { sources, note } = Astro.props;
+
+const COLS = 7;
+const ROWS = 5;
+const NODES = 15;
+const CELL = 80;
+const PAD = 40;
+const AVATAR_R = 32;
+const width = PAD * 2 + CELL * (COLS - 1);
+const height = PAD * 2 + CELL * (ROWS - 1);
+
+const rand = random();
+const point = (x: number, y: number) => ({ x: PAD + x * CELL, y: PAD + y * CELL });
+
+// The platform (avatar) sits in the middle; the remaining nodes are scattered by the seed.
+const centre = { x: Math.floor(COLS / 2), y: Math.floor(ROWS / 2) };
+const cells = Array.from({ length: COLS * ROWS }, (_, i) => ({ x: i % COLS, y: Math.floor(i / COLS) })).filter(
+  cell => cell.x !== centre.x || cell.y !== centre.y,
+);
+for (let i = cells.length - 1; i > 0; i--) {
+  const j = Math.floor(rand() * (i + 1));
+  [cells[i], cells[j]] = [cells[j], cells[i]];
+}
+const nodes = [centre, ...cells.slice(0, NODES - 1)].map(({ x, y }) => point(x, y));
+
+const distance = (a: number, b: number) =>
+  Math.abs(nodes[a].x - nodes[b].x) + Math.abs(nodes[a].y - nodes[b].y);
+
+// Prim's minimum spanning tree rooted at the platform: every node has one route in.
+const parent = new Map<number, number>();
+const inTree = new Set([0]);
+while (inTree.size < nodes.length) {
+  let best: [number, number] | undefined;
+  for (const a of inTree) {
+    for (let b = 0; b < nodes.length; b++) {
+      if (!inTree.has(b) && (!best || distance(a, b) < distance(...best))) best = [a, b];
+    }
+  }
+  parent.set(best![1], best![0]);
+  inTree.add(best![1]);
+}
+
+// Child → parent elbow, without the leading move so segments can be chained into one route.
+const elbow = (child: number) => {
+  const q = nodes[parent.get(child)!];
+  return child % 2 ? `H${q.x}V${q.y}` : `V${q.y}H${q.x}`;
+};
+const route = (from: number) => {
+  let d = `M${nodes[from].x} ${nodes[from].y}`;
+  for (let node = from; node !== 0; node = parent.get(node)!) d += elbow(node);
+  return d;
+};
+const depth = (node: number): number => (node === 0 ? 0 : 1 + depth(parent.get(node)!));
+
+// Signal sources are the deepest leaves, kept apart so the streams come from different directions.
+const isLeaf = (node: number) => node !== 0 && ![...parent.values()].includes(node);
+const leaves = nodes
+  .map((_, i) => i)
+  .filter(isLeaf)
+  .sort((a, b) => depth(b) - depth(a) || a - b);
+const picked: number[] = [];
+for (const minGap of [CELL * 3, CELL * 2, 0]) {
+  for (const leaf of leaves) {
+    if (picked.length < sources.length && !picked.includes(leaf) && picked.every(p => distance(p, leaf) >= minGap))
+      picked.push(leaf);
+  }
+}
+
+const photo = await getImage({ src: avatar, width: AVATAR_R * 4, height: AVATAR_R * 4, format: 'webp' });
+const root = nodes[0];
+---
+
+<svg
+  class="topology"
+  viewBox={`0 0 ${width} ${height}`}
+  role="img"
+  aria-label={`Diagram: ${sources.join(', ')} flowing into a central node with Piotr's photo`}
+>
+  <defs>
+    <clipPath id="avatar-clip">
+      <circle cx={root.x} cy={root.y} r={AVATAR_R} />
+    </clipPath>
+  </defs>
+  <g class="grid">
+    {
+      Array.from({ length: COLS * ROWS }, (_, i) => (
+        <circle cx={PAD + (i % COLS) * CELL} cy={PAD + Math.floor(i / COLS) * CELL} r="1.5" />
+      ))
+    }
+  </g>
+  <g class="edges">
+    {[...parent.keys()].map(child => <path d={`M${nodes[child].x} ${nodes[child].y}${elbow(child)}`} />)}
+  </g>
+  <g class="flows">
+    {picked.map((leaf, i) => <path d={route(leaf)} style={`animation-delay: ${(-i * 0.8).toFixed(1)}s`} />)}
+  </g>
+  <g class="nodes">
+    {
+      nodes.map((node, i) =>
+        i === 0 || picked.includes(i) ? null : <circle cx={node.x} cy={node.y} r="5" />,
+      )
+    }
+  </g>
+  <g class="sources">
+    {
+      picked.map((leaf, i) => (
+        <g>
+          <rect x={nodes[leaf].x - 9} y={nodes[leaf].y - 9} width="18" height="18" rx="3" />
+          <text x={nodes[leaf].x} y={nodes[leaf].y - 18} text-anchor="middle">
+            {sources[i]}
+          </text>
+        </g>
+      ))
+    }
+  </g>
+  <g class="platform">
+    <circle class="ring" cx={root.x} cy={root.y} r={AVATAR_R + 4} />
+    <image
+      href={photo.src}
+      x={root.x - AVATAR_R}
+      y={root.y - AVATAR_R}
+      width={AVATAR_R * 2}
+      height={AVATAR_R * 2}
+      clip-path="url(#avatar-clip)"
+    />
+  </g>
+  {
+    note && (
+      <g class="note" aria-hidden="true">
+        <path
+          d={`M${root.x + 66} ${root.y + 52}C${root.x + 50} ${root.y + 60} ${root.x + 32} ${root.y + 52} ${root.x + 30} ${root.y + 34}`}
+        />
+        <path d={`M${root.x + 23} ${root.y + 42}L${root.x + 30} ${root.y + 33}L${root.x + 38} ${root.y + 40}`} />
+        <text x={root.x + 70} y={root.y + 60} transform={`rotate(-8 ${root.x + 70} ${root.y + 60})`}>
+          {note}
+        </text>
+      </g>
+    )
+  }
+</svg>
