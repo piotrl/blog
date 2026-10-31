@@ -1,12 +1,12 @@
 export const SITE_TITLE = 'Piotr Lewandowski';
 export const SITE_DESCRIPTION =
-  'Piotr Lewandowski, Product Architect at Dynatrace, on frontend architecture, TypeScript, observability and practical automation.';
+  'Piotr Lewandowski, Product Architect at Dynatrace, on frontend architecture, TypeScript, observability and working with people and AI agents.';
 export const AUTHOR = 'Piotr';
 export const AUTHOR_FULL_NAME = 'Piotr Lewandowski';
 export const JOB_TITLE = 'Product Architect';
 export const EMPLOYER = { name: 'Dynatrace', url: 'https://www.dynatrace.com/' };
 export const ABOUT =
-  'Product Architect at Dynatrace. Frontend architecture, observability and practical automation.';
+  'Product Architect at Dynatrace. Frontend architecture, observability, and working with people and AI agents.';
 export const POSTS_PER_PAGE = 10;
 
 export const SOCIAL_LINKS = [
@@ -24,8 +24,8 @@ export const FOCUS_AREAS = [
     summary: 'What happens to an application after release, and what incidents teach.',
   },
   {
-    title: 'Automation and AI workflows',
-    summary: 'Small tools built like production code; agents where they save real time.',
+    title: 'Working with people and agents',
+    summary: 'Clear specs, context and feedback loops that teams and AI agents can act on.',
   },
 ];
 
