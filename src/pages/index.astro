@@ -3,24 +3,77 @@ import { Image } from 'astro:assets';
 import avatar from '../../content/assets/author.png';
 import PostList from '../components/PostList.astro';
 import SocialLinks from '../components/SocialLinks.astro';
-import { ABOUT, AUTHOR, JOB_TITLE, POSTS_PER_PAGE, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import {
+  AUTHOR_FULL_NAME,
+  CAREER,
+  CONTACT_EMAIL,
+  EMPLOYER,
+  FOCUS_AREAS,
+  JOB_TITLE,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+} from '../consts';
 import Base from '../layouts/Base.astro';
 import { getPosts } from '../lib/posts';
 import { person, withContext } from '../lib/schema';
 
-const posts = (await getPosts()).slice(0, POSTS_PER_PAGE);
+const posts = await getPosts();
 ---
 
 <Base title={`${SITE_TITLE} – ${JOB_TITLE}`} description={SITE_DESCRIPTION} jsonLd={withContext(person(Astro.site!))}>
   <section class="intro">
-    <Image src={avatar} width={120} height={120} alt="Piotr Lewandowski" class="avatar" loading="eager" />
+    <Image src={avatar} width={144} height={144} alt="" class="avatar" loading="eager" />
     <div>
-      <h1>Hey! I’m <b>{AUTHOR}</b></h1>
-      <p>{ABOUT}<br /><a href="/about/">👉 Learn more</a></p>
-      <SocialLinks />
+      <h1>{AUTHOR_FULL_NAME}</h1>
+      <p class="role">{JOB_TITLE} at {EMPLOYER.name} · Gdańsk, Poland</p>
     </div>
   </section>
+  <p class="lede">
+    I started on the backend in the Java ecosystem, moved to the frontend with JavaScript and TypeScript, and stayed for
+    the architecture: how large applications are structured, built and kept healthy in production.{' '}
+    <a href="/about/">More about me</a>
+  </p>
 
-  <h2 class="section-title">Latest Stories</h2>
-  <PostList posts={posts} />
+  <section class="section">
+    <h2>What I work on</h2>
+    <dl class="focus">
+      {
+        FOCUS_AREAS.map(area => (
+          <div>
+            <dt>{area.title}</dt>
+            <dd>{area.summary}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  {
+    CAREER.length > 0 && (
+      <section class="section">
+        <h2>Career</h2>
+        <dl class="career">
+          {CAREER.map(era => (
+            <div>
+              <dt>{era.years}</dt>
+              <dd>
+                <strong>{era.role}</strong> {era.focus}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <h2>Writing</h2>
+    <PostList posts={posts} />
+  </section>
+
+  <section class="section">
+    <h2>Contact</h2>
+    <p>The best way to reach me is LinkedIn, or <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <SocialLinks />
+  </section>
 </Base>
