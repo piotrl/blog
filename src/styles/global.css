@@ -387,40 +387,17 @@ time {
   margin-inline: auto;
 }
 
-.journey .zone {
-  opacity: 0.22;
-}
-
-.journey .stop-tech {
-  stop-color: var(--accent);
-}
-
-.journey .stop-people {
-  stop-color: var(--people);
-}
-
-.journey .band {
-  fill: none;
-  stroke-width: 30;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0.16;
-}
-
 .journey .line {
   fill: none;
   stroke-width: 2.5;
   stroke-linecap: round;
 }
 
-.journey .band-tech,
 .journey .line-tech,
-.journey .band-merged,
 .journey .line-merged {
   stroke: var(--accent);
 }
 
-.journey .band-people,
 .journey .line-people {
   stroke: var(--people);
 }
@@ -435,11 +412,6 @@ time {
   fill: var(--muted);
   font: 12px var(--font-mono);
   letter-spacing: 0.04em;
-}
-
-.journey .both {
-  fill: var(--muted);
-  font: italic 13px var(--font-body);
 }
 
 .journey .stage circle {

@@ -31,15 +31,15 @@ export const FOCUS_AREAS = [
 
 export const CONTACT_EMAIL = 'mail@piotrl.net';
 
-// Journey on the home page: two lanes that blur into each other and merge into the current role.
+// Journey on the home page: two branches that merge into the current role.
 export const JOURNEY = {
   tech: ['Java backends', 'Angular monorepos', 'React micro apps'],
   people: ['Team collaboration', 'Teaching', 'Leadership'],
-  both: ['Monorepo rules', 'Long-term migrations', 'Mentoring'],
   merge: 'Product architecture',
 };
 export const CAREER_SINCE = 2013;
-export const CAREER_NOTE = 'Along the way: products shipped as SaaS and on-premise.';
+export const CAREER_NOTE =
+  'Along the way: products shipped as SaaS and on-premise, and long-term migrations.';
 
 // Random seed (`openssl rand -hex 16`). Drives the accent hue and the home page topology; change it to reroll.
 export const DESIGN_SEED = '6f58704967446e7e004939d7df2e35ad';
