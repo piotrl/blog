@@ -35,7 +35,7 @@ Consider `PWA` as a set of principles to follow during building an app. Browsers
 
 *Tomasz Ducin ([slides](http://slides.com/ducin/async-functions-awaiting-you), [twitter](https://twitter.com/tomasz_ducin))*
 
-Promises and generators already provide the way for representing asynchronous functions in a synchronous manner. async/await* functions* are introduced as the simplification of this concept.
+Promises and generators already provide the way for representing asynchronous functions in a synchronous manner. async/await *functions* are introduced as the simplification of this concept.
 
 Promises themselves have limitations like being greedy and accessing a value from the previous step only. With complex calculations, you easily fall into hell the same as callbacks.
 
@@ -53,7 +53,7 @@ Promises themselves have limitations like being greedy and accessing a value fro
 
 *Kacper Sokołowski ([slides](https://speakerdeck.com/kaapa/let-the-dinosaurs-finally-die-out-with-a-little-help-of-a-service-worker), [demo](https://github.com/kaapa-s/service-worker-ancient-demo), [twitter](https://twitter.com/kaapa_s))*
 
-How to implement `PWA`*requirement — Network independence? Cache components necessary to run your application. Well-known options are local storage, cookies, indexedDB and now… service workers.
+How to implement `PWA` requirement — network independence? Cache components necessary to run your application. Well-known options are local storage, cookies, indexedDB and now… service workers.
 
 ### Service workers…
 
@@ -75,18 +75,18 @@ This presentation focuses on handling offline state, but very good use case are 
 
 *Gabor Wnuk ([slides](https://docs.google.com/presentation/d/16hGQaLER58QpEeXCJYCJup9qaGQDilcIzZ8wFK_Nh00), [twitter](https://twitter.com/gaborwnuk))*
 
-A story behind [*Pudelek.pl app](https://play.google.com/store/apps/details?id=pl.o2.android.pudelek&hl=pl)*: improving legacy project on three platforms (iOS, Android, Web) without rewriting everything from scratch. How? React Native can be built on top of your existing application as a dependency.
+A story behind [*Pudelek.pl app*](https://play.google.com/store/apps/details?id=pl.o2.android.pudelek&hl=pl): improving legacy project on three platforms (iOS, Android, Web) without rewriting everything from scratch. How? React Native can be built on top of your existing application as a dependency.
 
 There is no WebView. Means no HTML or CSS. Everything is compiled to native components by series of compilation steps. When you use fetch().then() API, it’s converted to appropriate HTTP Client in Java or iOS.
 
-They encouraged native developers to write [JavaScript](https://hackernoon.com/tagged/javascript), however that didn’t fit well. Technologically they used Flow type to keep code more familiar to Kotlin and Swift.
+They encouraged native developers to write JavaScript, however that didn’t fit well. Technologically they used Flow type to keep code more familiar to Kotlin and Swift.
 
 ![Business logic reused, views remain platform-specific](./shared-business-logic.png)*Business logic reused, views remain platform-specific*
 
 The success of *Pudelek app* is considered in following aspects:
 
 * For developers — shared codebase means one common knowledge, hot reloading improved development flow (4s vs 4min of compilation)
-* For business — 30% revenue boots, faster development
+* For business — 30% revenue boost, faster development
 * For users — Maintained 60fps even on weak devices, fewer crash reports (From 97% to 98%).
 
 ### Ending note
@@ -133,13 +133,13 @@ Maxim showed lots of statistics how mobile web is growing and overcoming desktop
 
 Progressive Web Apps are green octagon and meant to be “the next big thing”, I was especially interested in traits for not only users but business.
 
-* [Google plans to integrate *PWA* within Play Store](https://techcrunch.com/2017/02/02/google-will-soon-integrate-progressive-web-apps-deeper-into-android/). *PWA *can be also distributed within search, by links, etc.
+* [Google plans to integrate *PWA* within Play Store](https://techcrunch.com/2017/02/02/google-will-soon-integrate-progressive-web-apps-deeper-into-android/). *PWA* can be also distributed within search, by links, etc.
 
 * There are multiple statistics showing that users aren’t eager to discover new apps often and it’s very expensive to acquire them via App Stores.
 
 * It lowers entrance barrier for your users to use your app — don’t have to install it, nor update every single time you fix the bug.
 
-If it’s framework agnostic, how to actually implement it? Look for inspiration at [*HackerNews PWA](https://hnpwa.com/)* — A spiritual successor to *TodoMVC*.
+If it’s framework agnostic, how to actually implement it? Look for inspiration at [*HackerNews PWA*](https://hnpwa.com/) — A spiritual successor to *TodoMVC*.
 
 What about other popular options? I highly recommend [slides](http://slides.com/webmax/mobileweb-jspoland). Maxim covered in great details differences between Ionic, NativeScript, React Native and *PWA* ideology.
 
@@ -173,9 +173,9 @@ What about other popular options? I highly recommend [slides](http://slides.com/
 
 ## DevTools Deep Dive
 
-*Alex Lakatos([video](https://www.youtube.com/watch?v=mwfYmo8GhoU), [twitter](https://twitter.com/lakatos88))*
+*Alex Lakatos ([video](https://www.youtube.com/watch?v=mwfYmo8GhoU), [twitter](https://twitter.com/lakatos88))*
 
-I haven’t taken notes here. Alex has given a demo on how Firefox DevTools tries to catch up Chrome. Starting with simple tricks in Inspector and [Network ](https://hackernoon.com/tagged/network)tab, configuration to more advanced performance analysis.
+I haven’t taken notes here. Alex has given a demo on how Firefox DevTools tries to catch up Chrome. Starting with simple tricks in Inspector and Network tab, configuration to more advanced performance analysis.
 
 Although I wasn’t convinced to use Fx DevTools over Chrome’s, I strongly support Firefox in that competition.
 
