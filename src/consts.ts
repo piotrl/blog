@@ -12,5 +12,4 @@ export const POSTS_PER_PAGE = 10;
 export const SOCIAL_LINKS = [
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/piotr--lewandowski/' },
   { label: 'GitHub', url: 'https://github.com/piotrl' },
-  { label: 'Speakerdeck', url: 'https://speakerdeck.com/piotrl' },
 ];
