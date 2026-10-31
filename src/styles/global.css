@@ -216,16 +216,73 @@ time {
   stroke-width: 1.5;
 }
 
-.topology .hub rect {
+.topology .sources rect {
   fill: var(--accent);
 }
 
-.topology .hub text {
+.topology .sources text {
   fill: var(--text);
   font: 13px var(--font-mono);
   paint-order: stroke;
   stroke: var(--bg);
   stroke-width: 5px;
+}
+
+.topology .flows path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 8 72;
+  animation: telemetry 2.4s linear infinite;
+}
+
+.topology .platform .ring {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.topology .platform .pulse {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes telemetry {
+  from {
+    stroke-dashoffset: 80;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topology .flows path,
+  .topology .platform .pulse {
+    animation: none;
+  }
+
+  .topology .platform .pulse {
+    display: none;
+  }
 }
 
 .section {

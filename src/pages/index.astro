@@ -42,7 +42,7 @@ const index = (i: number) => String(i + 1).padStart(2, '0');
         <a href={linkedIn.url}>LinkedIn ↗</a>
       </p>
     </div>
-    <Topology labels={FOCUS_AREAS.map(area => area.key)} />
+    <Topology sources={['logs', 'metrics', 'traces']} />
   </section>
 
   <section class="section">

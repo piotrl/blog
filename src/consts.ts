@@ -16,17 +16,14 @@ export const SOCIAL_LINKS = [
 
 export const FOCUS_AREAS = [
   {
-    key: 'frontend',
     title: 'Frontend architecture',
     summary: 'Large TypeScript codebases, monorepos, build tooling and their trade-offs.',
   },
   {
-    key: 'observability',
     title: 'Observability',
     summary: 'What happens to an application after release, and what incidents teach.',
   },
   {
-    key: 'automation',
     title: 'Automation and AI workflows',
     summary: 'Small tools built like production code; agents where they save real time.',
   },
