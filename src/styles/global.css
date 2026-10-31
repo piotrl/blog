@@ -547,6 +547,15 @@ time {
   font-size: clamp(1.875rem, 5vw, 2.5rem);
 }
 
+.archive-note {
+  margin: -1rem 0 2rem;
+  padding: 0.625rem 0.875rem;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
 .post .cover {
   display: block;
   margin: 0 auto 2.5rem;

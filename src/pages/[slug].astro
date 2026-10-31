@@ -24,6 +24,8 @@ interface Props {
 const { post, related } = Astro.props;
 const { title, description, date, cover, tags } = post.data;
 const { Content } = await render(post);
+// Older posts get a short note so readers know the tooling may have moved on.
+const isArchived = new Date().getFullYear() - date.getFullYear() >= 3;
 const url = new URL(postUrl(post), Astro.site).href;
 
 const jsonLd = withContext({
@@ -44,6 +46,7 @@ const jsonLd = withContext({
     <header>
       <time datetime={date.toISOString()}>{formatDate(date)}</time>
       <h1>{title}</h1>
+      {isArchived && <p class="archive-note">Written in {date.getFullYear()}. Kept for reference, so some details may be dated.</p>}
     </header>
     {cover && <Image src={cover} width={720} alt="" class="cover" loading="eager" />}
     <div class="prose">

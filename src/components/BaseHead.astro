@@ -40,7 +40,7 @@ const pageTitle = title.startsWith(SITE_TITLE) ? title : `${title} | ${SITE_TITL
 <meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
 {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
 {
@@ -63,7 +63,7 @@ const pageTitle = title.startsWith(SITE_TITLE) ? title : `${title} | ${SITE_TITL
 }
 
 <meta name="twitter:card" content={ogImageURL ? 'summary_large_image' : 'summary'} />
-<meta name="twitter:title" content={title} />
+<meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={description} />
 
 {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

@@ -13,11 +13,13 @@ interface Props {
 }
 
 const { page } = Astro.props;
+const years = (await getPosts()).map(post => post.data.date.getFullYear());
 ---
 
 <Base title="Writing" description={SITE_DESCRIPTION}>
   <header class="page-header">
     <h1>Writing</h1>
+    <p>Archive, {Math.min(...years)}–{Math.max(...years)}</p>
   </header>
   <PostList posts={page.data} />
   {
