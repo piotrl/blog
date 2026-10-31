@@ -160,8 +160,7 @@ time {
   padding-block: 1rem 2rem;
 }
 
-.eyebrow,
-.index {
+.eyebrow {
   font: 0.8125rem/1.4 var(--font-mono);
   color: var(--accent);
   letter-spacing: 0.02em;
@@ -324,7 +323,7 @@ time {
 }
 
 .focus h3 {
-  margin: 0.5rem 0 0.5rem;
+  margin: 0 0 0.5rem;
   font-size: 1.1875rem;
 }
 

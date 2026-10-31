@@ -21,7 +21,6 @@ import { person, withContext } from '../lib/schema';
 const posts = await getPosts();
 const years = posts.map(post => post.data.date.getFullYear());
 const linkedIn = SOCIAL_LINKS.find(link => link.label === 'LinkedIn')!;
-const index = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
 <Base
@@ -50,9 +49,8 @@ const index = (i: number) => String(i + 1).padStart(2, '0');
     <h2>What I work on</h2>
     <ol class="focus">
       {
-        FOCUS_AREAS.map((area, i) => (
+        FOCUS_AREAS.map(area => (
           <li>
-            <span class="index">{index(i)}</span>
             <h3>{area.title}</h3>
             <p>{area.summary}</p>
           </li>
@@ -65,9 +63,8 @@ const index = (i: number) => String(i + 1).padStart(2, '0');
     <h2>Path</h2>
     <ol class="path">
       {
-        CAREER.map((step, i) => (
+        CAREER.map(step => (
           <li>
-            <span class="index">{index(i)}</span>
             <strong>{step.stage}</strong>
             <span>{step.detail}</span>
           </li>
