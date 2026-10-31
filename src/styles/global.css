@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Caveat Note';
+  src: url('/fonts/caveat-note.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
 :root {
   --text: #1c1e21;
   --muted: #5f6670;
@@ -172,7 +179,7 @@ time {
 
 .hero h1 {
   margin: 0.75rem 0 1.25rem;
-  font-size: clamp(2.5rem, 7vw, 4.25rem);
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.035em;
@@ -275,13 +282,42 @@ time {
 
 @media (prefers-reduced-motion: reduce) {
   .topology .flows path,
-  .topology .platform .pulse {
+  .topology .platform .pulse,
+  .hero-links a:hover,
+  .split a:hover {
     animation: none;
+  }
+
+  .focus li {
+    transition: none;
   }
 
   .topology .platform .pulse {
     display: none;
   }
+}
+
+.topology .note path {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.topology .note text {
+  fill: var(--text);
+  font:
+    600 24px 'Caveat Note',
+    'Comic Sans MS',
+    cursive;
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 6px;
+}
+
+.topology:hover .flows path {
+  animation-duration: 1s;
 }
 
 .section {
@@ -318,8 +354,43 @@ time {
 }
 
 .focus li {
-  padding-top: 1rem;
-  border-top: 2px solid var(--text);
+  padding: 1.25rem 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: var(--surface);
+  transform: rotate(var(--tilt, -1deg));
+  transition: transform 0.25s ease;
+}
+
+.focus li:nth-child(2) {
+  --tilt: 1.2deg;
+}
+
+.focus li:nth-child(3) {
+  --tilt: -0.6deg;
+}
+
+.focus li:hover {
+  transform: rotate(0) translateY(-3px);
+}
+
+.hero-links a,
+.split a {
+  display: inline-block;
+}
+
+.hero-links a:hover,
+.split a:hover {
+  animation: wiggle 0.4s ease-in-out;
+}
+
+@keyframes wiggle {
+  25% {
+    transform: rotate(-3deg);
+  }
+
+  75% {
+    transform: rotate(3deg);
+  }
 }
 
 .focus h3 {

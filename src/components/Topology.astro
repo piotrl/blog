@@ -5,9 +5,10 @@ import { random } from '../lib/seed';
 
 interface Props {
   sources: string[];
+  note?: string;
 }
 
-const { sources } = Astro.props;
+const { sources, note } = Astro.props;
 
 const COLS = 7;
 const ROWS = 5;
@@ -134,4 +135,17 @@ const root = nodes[0];
       clip-path="url(#avatar-clip)"
     />
   </g>
+  {
+    note && (
+      <g class="note" aria-hidden="true">
+        <path
+          d={`M${root.x + 66} ${root.y + 52}C${root.x + 50} ${root.y + 60} ${root.x + 32} ${root.y + 52} ${root.x + 30} ${root.y + 34}`}
+        />
+        <path d={`M${root.x + 23} ${root.y + 42}L${root.x + 30} ${root.y + 33}L${root.x + 38} ${root.y + 40}`} />
+        <text x={root.x + 70} y={root.y + 60} transform={`rotate(-8 ${root.x + 70} ${root.y + 60})`}>
+          {note}
+        </text>
+      </g>
+    )
+  }
 </svg>
