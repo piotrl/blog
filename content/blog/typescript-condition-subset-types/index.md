@@ -11,9 +11,9 @@ In this article, **we’re going to experiment with TypeScript 2.8 conditional a
 
 You don’t have to know details of what mapping types are. It’s enough to know that TypeScript allows you to take an existing type and slightly modify it to make a new type. This is part of its [Turing Completeness](https://github.com/Microsoft/TypeScript/issues/14833).
 
-You can think of type as *function *— it takes another type as input, makes some calculations and produces new type as output. If you heard of Partial<Type> or Pick<Type, Keys>, this is exactly how they work.
+You can think of type as *function* — it takes another type as input, makes some calculations and produces new type as output. If you heard of Partial<Type> or Pick<Type, Keys>, this is exactly how they work.
 
-## 📐Let’s define the problem
+## Let’s define the problem
 
 Say you have a configuration object. It contains different groups of keys like *IDs*, *Dates* and *functions*. It may come from an API or be maintained by different people for years until it grows huge. (I know, I know, that never happens)
 
@@ -55,11 +55,11 @@ type SubType = {
 
 ---
 
-## 📈Step by step to a solution
+## Step by step to a solution
 
 ### Step 1 — Baseline
 
-The biggest problem is to find and remove keys that doesn’t match our condition. Fortunately, TypeScript 2.8 comes with conditional types! As a little trick, we’re going to create support type for a future calculation.
+The biggest problem is to find and remove keys that don’t match our condition. Fortunately, TypeScript 2.8 comes with conditional types! As a little trick, we’re going to create support type for a future calculation.
 
 ```typescript
 type FilterFlags<Base, Condition> = {
@@ -107,7 +107,7 @@ type AllowedNames<Base, Condition> =
 ```
 
 We’re using the code from the previous step and adding only one more part: [keyof Base] 
-What this does is gather the most common types of given properties and ignore *never* (as those can’t be used anyway)*.*
+What this does is gather the most common types of given properties and ignore *never* (as those can’t be used anyway).
 
 ```typescript
 type family = {
@@ -156,7 +156,7 @@ Pick<Person, 'id' | 'name'>;
 
 ---
 
-## 🎉Full Solution
+## Full solution
 
 Summarizing all steps, we created two types that support our SubType implementation:
 
@@ -185,7 +185,7 @@ type SubType<Base, Condition> = Pick<Base, {
 
 ---
 
-## 🔥 Usages
+## Usages
 
 1. Extract only primitive key types from JSON:
 
@@ -229,13 +229,13 @@ type Callable = {
 }
 ```
 
-If you find any other nice use cases, show us in a comment!
+If you find other nice use cases, let me know.
 
 ---
 
-### 🤔 What this solution won’t solve?
+### What this solution won’t solve?
 
-1. One interesting scenario is to create Nullable subtype. But because string | null is not assignable to null, it won’t work. If you have an idea to solve it, let us know in a comment!
+1. One interesting scenario is to create Nullable subtype. But because string | null is not assignable to null, it won’t work. If you have an idea how to solve it, let me know.
 
 ```typescript
 // expected: Nullable = { city, street }
@@ -256,12 +256,8 @@ Also, I would not recommend using Object.keys() on such a structure as runtime r
 
 ## Summary
 
-Congratulations! Today we learned how *condition *and *mapped types *work in practice. But what’s more important, we’ve focused to solve the riddle — it’s easy to combine multiple types within one, but filtering out type from keys you don’t need? Now you know. 💪
+Congratulations! Today we learned how *condition* and *mapped types* work in practice. But what’s more important, we’ve focused to solve the riddle — it’s easy to combine multiple types within one, but filtering out type from keys you don’t need? Now you know.
 
 I like how TypeScript is easy to learn yet hard to master. I constantly discover new ways to solve problems that came up in my daily duties. As follow up, I highly recommend reading [advanced typing](http://www.typescriptlang.org/docs/handbook/advanced-types.html) page in the documentation.
 
-The inspiration for this post comes from a [StackOverflow question ](https://stackoverflow.com/questions/50900533/how-can-i-extract-the-names-of-all-fields-of-a-specific-type-from-an-interface-i/50900933)asking exactly this problem. If you like solving riddles, you might also be interested in what [Dynatrace](https://jobs.lever.co/dynatrace?lever-via=L11FggMUKN) is doing with the software.
-
-**If you’ve learned something new, please:**
-
-→ [follow me on LinkedIn](https://www.linkedin.com/in/piotr--lewandowski/) so you won’t miss future posts.
+The inspiration for this post comes from a [StackOverflow question](https://stackoverflow.com/questions/50900533/how-can-i-extract-the-names-of-all-fields-of-a-specific-type-from-an-interface-i/50900933) asking exactly this problem.

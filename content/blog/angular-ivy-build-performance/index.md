@@ -13,9 +13,9 @@ Discussing how Ivy works is out of our scope. I recommend [inDepth article about
 
 ### Application context
 
-Each application is unique. Hence, Ivy enablement is going to cause different improvements. Because of this, benchmark I created must be spoiled by application we develop. Here are few details about it:
+Each application is unique. Hence, enabling Ivy will bring different improvements. The benchmark below is shaped by the application we develop. Here are a few details about it:
 
-A single [Nx monorepo](https://nx.dev/angular) with two apps: Bigger main product and smaller support app, both sharing codebase. We develop this codebase for 2 years.
+A single [Nx monorepo](https://nx.dev/angular) with two apps: Bigger main product and smaller support app, both sharing codebase. We’ve been developing this codebase for 2 years.
 
 - 130k lines of code (TypeScript + HTML)
 - 800 components
@@ -29,7 +29,7 @@ At the point of writing, we already use Angular 9.1, I’ll put a note where it 
 
 Measurements are based on gzipped vs non-gzipped configuration. To make results easier to analyse, I focus on ES5 builds only.
 
-Angular team suggest expected values:
+The Angular team suggests expected values:
 
 - Small applications: 30% improvement
 - Medium applications: 2% improvement
@@ -41,19 +41,19 @@ I’m using full build metric for the general sum of improvements delivered by t
 
 ![](./es5-bundle-size.png)<figcaption>Full production bundle size Values are Megabytes.</figcaption>
 
-#### gzipped value does not knock down
+#### Gzipped size doesn’t tell the whole story
 
-Full build metrics does not relief what is going on under the hood. List of files (for us its over 140) splits on main.js file that is loaded as first and 139 lazy loaded modules.
+The full build metric doesn’t reveal what is going on under the hood. Our list of files (over 140) splits into main.js, which is loaded first, and 139 lazy-loaded modules.
 
 Let’s split comparison:
 
 ![](./main-chunks-size.png)<figcaption>Comparison of main.js and sum of lazy loaded chunks. Values are Megabytes.</figcaption>
 
-#### 🤯 Why is main.js bigger?
+#### Why is main.js bigger?
 
-Lazy loaded chunks are purely compiled with Ivy, effecting smaller output of gzipped and minified bundles by 20–30%!
+Lazy-loaded chunks are compiled purely with Ivy, which makes gzipped and minified bundles 20–30% smaller.
 
-This is good, but what is going on with main.js? It meant to be much smaller because of better tree-shaking of Angular!
+This is good, but what is going on with main.js? It was meant to be much smaller because of better tree-shaking of Angular!
 
 Have a look. main.js consist of:
 
@@ -91,7 +91,7 @@ Differential loading (ES2015+ES5) build used to be slower for obvious reasons, i
 - 4 instead of 6 minutes for differential loading
 - 3 minutes 40 seconds instead 4 minutes 45 seconds for regular ES5 build
 
-🎉 20–30% improvement!
+A 20–30% improvement.
 
 #### Development build
 
@@ -104,7 +104,7 @@ After enabling Ivy, we see:
 - ES2015: 1min 25s instead 1min 55s
 - ES5: 1min 40s instead 2min
 
-🎉 20–25% improvement! 30 seconds gained for every build started 😎
+A 20–25% improvement: 30 seconds gained for every build started.
 
 #### Recompile time
 
@@ -117,11 +117,11 @@ We’ve already observed significant improvements in recompilation times after u
 - Small, lazy-loaded module: 5–7 seconds instead of 10–12s
 - Change in HTML in core components: 12–13s instead of 20s
 
-🎉 30–40% improvement! 😲 5s every-change makes a dramatic difference in development experience.
+A 30–40% improvement. Saving 5 seconds on every change makes a dramatic difference to the development experience.
 
-### YES!
+### Is it worth it?
 
-Those results are worth waiting for, especially we’re at the process of migration to full Ivy potential, and we can expect further improvements.
+Yes. Those results are worth waiting for, especially as we’re at the process of migration to full Ivy potential, and we can expect further improvements.
 
 **BUT!** I mentioned libraries, those need to be re-compiled with ngcc tool before a build. For us it costs **40–50s for Angular 9.0** and **20–30s for Angular 9.1**
 
@@ -140,7 +140,7 @@ I haven’t seen any difference for our set-up just by enabling/disabling Ivy.
 
 ### Closing thoughts
 
-You might get impression that results are not worth upgrade.   
+You might get the impression that results are not worth the upgrade.   
 No! Nothing like that. ngcc adds some overhead both size and speed, but:
 
 ![](./ivy-enabler.png)
@@ -149,9 +149,7 @@ After having a thought, I’m happy bundle size is just not worse during migrati
 
 I’m thankful for ngcc, so library authors can have versions compatible with Angular 8 and Angular 9.
 
-I’m thankful we’re not going to split community into Post-Ivy and Pre-Ivy era, the way Python 2 vs Python 3 or Angular 1 vs Angular 2+ did. 😉
-
-In the next blogpost, I’ll present a few tips on migrating to Angular 9 and 9.1 with a single-file commit. Wait, is it even possible with all breaking changes? Yes! But you need to act smart.
+I’m thankful we’re not going to split community into Post-Ivy and Pre-Ivy era, the way Python 2 vs Python 3 or Angular 1 vs Angular 2+ did.
 
 ### Bonus: Lesson learned
 
@@ -162,9 +160,3 @@ The front-end toolset is complex. Even minor dependency might grow your bundle o
 Angular team tries to save every bit of code in runtime, whereas e.g. sass-loader might add megabytes of duplicated CSS just because of a simple mistake in the configuration.
 
 What about your projects? Did you perform similar benchmarks? I’d be happy to hear about your results.
-
-**If you’ve learned something new, please:**
-
-→ [follow me on LinkedIn](https://www.linkedin.com/in/piotr--lewandowski/) so you won’t miss future posts.
-
-* * *

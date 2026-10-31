@@ -21,7 +21,7 @@ I'll present both approaches to solve problem of translating enums.
 
 ## Problem definition
 
-Its common scenario to use enums for grouping state messages. Let's make an example in simple Todo component.
+It’s a common scenario to use enums for grouping state messages. Let's make an example in simple Todo component.
 
 ```typescript
 interface TodoItem {
@@ -55,7 +55,7 @@ export class TodoList {
 ```
 
 So what is the problem?
-1. `{{ items.state }}` will produce generated enums values (0, 1, 2... or 'TODO', 'IN_PROGRESS' or 'Started', 'In Progress'...)
+1. `{{ item.state }}` will produce generated enums values (0, 1, 2... or 'TODO', 'IN_PROGRESS' or 'Started', 'In Progress'...)
 2. In different languages, we'll keep having english messages.
 
 ## Suggested solution: `$localize`
@@ -85,7 +85,7 @@ function getStateMessage(state: TodoState): string {
   switch(state) {
     case TodoState.TODO:
       return $localize`Not started`;
-    case TodoState.IN_PROGRES:
+    case TodoState.IN_PROGRESS:
       return $localize`Started`;
     case TodoState.DONE:
       return $localize`Finished`;
@@ -97,7 +97,7 @@ function getStateMessage(state: TodoState): string {
 
 ## Alternative for Angular <10
 
-Every string visible in UI can to be put into HTML template. For messages in HTML, we can apply `i18n` attribute to mark them as translatable.
+Every string visible in the UI can be put into HTML template. For messages in HTML, we can apply `i18n` attribute to mark them as translatable.
 
 For complex messages calculation (enums, or some text logic) we can create *new component responsible only for translation*. We're using this practice widely in our applications, making a clear separation of concerns and focusing only on logic around messages.
 
@@ -177,14 +177,14 @@ export class TodoStateI18n {
 ```
 
 * Works with const enums
-* ICU `select` is not well-supported in translation tools ð
+* ICU `select` is not well-supported in translation tools
 * Useful especially for string enums
 * Simpler approach, but also supports HTML elements e.g. `TODO {<span>not</span> started}`)
 * To be secure, you need to write unit tests that checks enum values
 
 ### Bonus: Testing switch-case component with i18n
 
-Whenever we have switch-cases in template, we can make sure we have 
+Whenever we have switch-cases in a template, a test can make sure every enum value has a translation:
 
 ```typescript
 describe('TodoStateI18n', () => {
@@ -207,7 +207,7 @@ describe('TodoStateI18n', () => {
 
   // regular specs
   it('should display correct text for TODO', () => {
-    component.value = TodoState.TODO;
+    component.key = TodoState.TODO;
 
     fixture.detectChanges();
 
@@ -220,7 +220,7 @@ describe('TodoStateI18n', () => {
   Object.values(TodoState)
     .forEach((value) => {
       it(`should translate ${value}`, () => {
-        component.value = value;
+        component.key = value;
 
         fixture.detectChanges();
 
