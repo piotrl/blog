@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import { formatDate, type Post, postUrl } from '../lib/posts';
+import TagList from './TagList.astro';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="post-list">
+  {
+    posts.map(post => (
+      <li>
+        {post.data.cover && (
+          <a href={postUrl(post)} tabindex="-1" aria-hidden="true">
+            <Image src={post.data.cover} width={170} height={170} fit="cover" alt="" />
+          </a>
+        )}
+        <div>
+          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+          <h2>
+            <a href={postUrl(post)}>{post.data.title}</a>
+          </h2>
+          <p>{post.data.description}</p>
+          <TagList tags={post.data.tags} />
+        </div>
+      </li>
+    ))
+  }
+</ul>

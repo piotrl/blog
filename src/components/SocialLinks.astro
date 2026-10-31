@@ -1,0 +1,7 @@
+---
+import { SOCIAL_LINKS } from '../consts';
+---
+
+<ul class="social">
+  {SOCIAL_LINKS.map(link => <li><a href={link.url} rel="me">{link.label}</a></li>)}
+</ul>
