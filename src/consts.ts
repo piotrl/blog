@@ -16,14 +16,17 @@ export const SOCIAL_LINKS = [
 
 export const FOCUS_AREAS = [
   {
+    key: 'frontend',
     title: 'Frontend architecture',
     summary: 'Large TypeScript codebases, monorepos, build tooling and their trade-offs.',
   },
   {
+    key: 'observability',
     title: 'Observability',
     summary: 'What happens to an application after release, and what incidents teach.',
   },
   {
+    key: 'automation',
     title: 'Automation and AI workflows',
     summary: 'Small tools built like production code; agents where they save real time.',
   },
@@ -31,5 +34,14 @@ export const FOCUS_AREAS = [
 
 export const CONTACT_EMAIL = 'mail@piotrl.net';
 
-// Rendered on the home page only when filled in.
-export const CAREER: { years: string; role: string; focus: string }[] = [];
+// Career path on the home page; `years` is shown only when set.
+export const CAREER: { stage: string; detail: string; years?: string }[] = [
+  { stage: 'Backend', detail: 'Java ecosystem' },
+  { stage: 'Frontend', detail: 'JavaScript and TypeScript' },
+  { stage: 'Architecture', detail: 'Product Architect at Dynatrace' },
+];
+export const CAREER_NOTE =
+  'Along the way: products shipped as SaaS and on-premise, and long-term migrations.';
+
+// Random seed (`openssl rand -hex 16`). Drives the accent hue and the home page topology; change it to reroll.
+export const DESIGN_SEED = '6f58704967446e7e004939d7df2e35ad';

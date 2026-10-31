@@ -1,0 +1,89 @@
+---
+import { random } from '../lib/seed';
+
+interface Props {
+  labels: string[];
+}
+
+const { labels } = Astro.props;
+
+const COLS = 7;
+const ROWS = 5;
+const NODES = 15;
+const CELL = 80;
+const PAD = 40;
+const width = PAD * 2 + CELL * (COLS - 1);
+const height = PAD * 2 + CELL * (ROWS - 1);
+
+const rand = random();
+const cells = Array.from({ length: COLS * ROWS }, (_, i) => ({ x: i % COLS, y: Math.floor(i / COLS) }));
+for (let i = cells.length - 1; i > 0; i--) {
+  const j = Math.floor(rand() * (i + 1));
+  [cells[i], cells[j]] = [cells[j], cells[i]];
+}
+const nodes = cells.slice(0, NODES).map(({ x, y }) => ({ x: PAD + x * CELL, y: PAD + y * CELL }));
+
+const distance = (a: number, b: number) =>
+  Math.abs(nodes[a].x - nodes[b].x) + Math.abs(nodes[a].y - nodes[b].y);
+
+// Prim's minimum spanning tree over Manhattan distance keeps the map connected without crossing clutter.
+const edges: [number, number][] = [];
+const inTree = new Set([0]);
+while (inTree.size < nodes.length) {
+  let best: [number, number] | undefined;
+  for (const a of inTree) {
+    for (let b = 0; b < nodes.length; b++) {
+      if (!inTree.has(b) && (!best || distance(a, b) < distance(...best))) best = [a, b];
+    }
+  }
+  edges.push(best!);
+  inTree.add(best![1]);
+}
+
+// A few short extra links turn the tree into a network.
+const linked = (a: number, b: number) => edges.some(([x, y]) => (x === a && y === b) || (x === b && y === a));
+for (let a = 0; a < nodes.length && edges.length < nodes.length + 3; a++) {
+  const b = nodes.findIndex((_, i) => i > a && distance(a, i) === CELL && !linked(a, i));
+  if (b >= 0) edges.push([a, b]);
+}
+
+const elbow = ([a, b]: [number, number], i: number) => {
+  const [p, q] = [nodes[a], nodes[b]];
+  return i % 2 ? `M${p.x} ${p.y}H${q.x}V${q.y}` : `M${p.x} ${p.y}V${q.y}H${q.x}`;
+};
+
+// Label the best-connected nodes: they read as the hubs of the system.
+const degree = nodes.map((_, i) => edges.filter(edge => edge.includes(i)).length);
+const hubs: number[] = [];
+for (const i of nodes.map((_, i) => i).sort((a, b) => degree[b] - degree[a] || a - b)) {
+  if (hubs.length < labels.length && hubs.every(hub => distance(hub, i) >= CELL * 3)) hubs.push(i);
+}
+---
+
+<svg class="topology" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`System map: ${labels.join(', ')}`}>
+  <g class="grid">
+    {
+      Array.from({ length: COLS * ROWS }, (_, i) => (
+        <circle cx={PAD + (i % COLS) * CELL} cy={PAD + Math.floor(i / COLS) * CELL} r="1.5" />
+      ))
+    }
+  </g>
+  <g class="edges">{edges.map((edge, i) => <path d={elbow(edge, i)} />)}</g>
+  <g class="nodes">
+    {
+      nodes.map((node, i) => {
+        const hub = hubs.indexOf(i);
+        return hub >= 0 ? (
+          <g class="hub">
+            <rect x={node.x - 9} y={node.y - 9} width="18" height="18" rx="3" />
+            <text x={node.x} y={node.y - 18} text-anchor="middle">
+              {labels[hub]}
+            </text>
+          </g>
+        ) : (
+          <circle cx={node.x} cy={node.y} r="5" />
+        );
+      })
+    }
+  </g>
+</svg>
