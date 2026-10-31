@@ -165,6 +165,6 @@ What about your projects? Did you perform similar benchmarks? I’d be happy to 
 
 **If you’ve learned something new, please:**
 
-→ [follow me on Twitter (@constjs)](https://twitter.com/constjs) so you won’t miss future posts:
+→ [follow me on LinkedIn](https://www.linkedin.com/in/piotr--lewandowski/) so you won’t miss future posts.
 
 * * *
