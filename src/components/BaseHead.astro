@@ -4,7 +4,7 @@ import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
 import avatar from '../../content/assets/author.png';
 import Analytics from './Analytics.astro';
-import { SITE_TITLE, TWITTER_HANDLE } from '../consts';
+import { SITE_TITLE } from '../consts';
 
 interface Props {
   title: string;
@@ -63,7 +63,6 @@ const pageTitle = title.startsWith(SITE_TITLE) ? title : `${title} | ${SITE_TITL
 }
 
 <meta name="twitter:card" content={ogImageURL ? 'summary_large_image' : 'summary'} />
-<meta name="twitter:creator" content={TWITTER_HANDLE} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 

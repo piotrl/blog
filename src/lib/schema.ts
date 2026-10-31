@@ -1,4 +1,4 @@
-import { AUTHOR_FULL_NAME, EMPLOYER, JOB_TITLE, OTHER_PROFILES, SOCIAL_LINKS } from '../consts';
+import { AUTHOR_FULL_NAME, EMPLOYER, JOB_TITLE, SOCIAL_LINKS } from '../consts';
 
 export const person = (site: URL) => ({
   '@type': 'Person',
@@ -7,7 +7,7 @@ export const person = (site: URL) => ({
   jobTitle: JOB_TITLE,
   worksFor: { '@type': 'Organization', ...EMPLOYER },
   address: { '@type': 'PostalAddress', addressLocality: 'Gdańsk', addressCountry: 'PL' },
-  sameAs: [...SOCIAL_LINKS.map(link => link.url), ...OTHER_PROFILES],
+  sameAs: SOCIAL_LINKS.map(link => link.url),
 });
 
 export const withContext = (node: Record<string, unknown>) => ({
