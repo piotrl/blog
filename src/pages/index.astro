@@ -1,79 +1,93 @@
 ---
-import { Image } from 'astro:assets';
-import avatar from '../../content/assets/author.png';
-import PostList from '../components/PostList.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import Topology from '../components/Topology.astro';
 import {
   AUTHOR_FULL_NAME,
   CAREER,
+  CAREER_NOTE,
   CONTACT_EMAIL,
   EMPLOYER,
   FOCUS_AREAS,
   JOB_TITLE,
   SITE_DESCRIPTION,
   SITE_TITLE,
+  SOCIAL_LINKS,
 } from '../consts';
 import Base from '../layouts/Base.astro';
 import { getPosts } from '../lib/posts';
 import { person, withContext } from '../lib/schema';
 
 const posts = await getPosts();
+const years = posts.map(post => post.data.date.getFullYear());
+const linkedIn = SOCIAL_LINKS.find(link => link.label === 'LinkedIn')!;
+const index = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
-<Base title={`${SITE_TITLE} – ${JOB_TITLE}`} description={SITE_DESCRIPTION} jsonLd={withContext(person(Astro.site!))}>
-  <section class="intro">
-    <Image src={avatar} width={144} height={144} alt="" class="avatar" loading="eager" />
-    <div>
+<Base
+  title={`${SITE_TITLE} – ${JOB_TITLE}`}
+  description={SITE_DESCRIPTION}
+  jsonLd={withContext(person(Astro.site!))}
+  wide
+>
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">{JOB_TITLE} · {EMPLOYER.name} · Gdańsk</p>
       <h1>{AUTHOR_FULL_NAME}</h1>
-      <p class="role">{JOB_TITLE} at {EMPLOYER.name} · Gdańsk, Poland</p>
+      <p class="lede">
+        I design how large web applications are structured, built and kept healthy in production. Frontend
+        architecture, observability and practical automation.
+      </p>
+      <p class="hero-links">
+        <a href="/about/">About me</a>
+        <a href={linkedIn.url}>LinkedIn ↗</a>
+      </p>
     </div>
+    <Topology labels={FOCUS_AREAS.map(area => area.key)} />
   </section>
-  <p class="lede">
-    I started on the backend in the Java ecosystem, moved to the frontend with JavaScript and TypeScript, and stayed for
-    the architecture: how large applications are structured, built and kept healthy in production.{' '}
-    <a href="/about/">More about me</a>
-  </p>
 
   <section class="section">
     <h2>What I work on</h2>
-    <dl class="focus">
+    <ol class="focus">
       {
-        FOCUS_AREAS.map(area => (
-          <div>
-            <dt>{area.title}</dt>
-            <dd>{area.summary}</dd>
-          </div>
+        FOCUS_AREAS.map((area, i) => (
+          <li>
+            <span class="index">{index(i)}</span>
+            <h3>{area.title}</h3>
+            <p>{area.summary}</p>
+          </li>
         ))
       }
-    </dl>
-  </section>
-
-  {
-    CAREER.length > 0 && (
-      <section class="section">
-        <h2>Career</h2>
-        <dl class="career">
-          {CAREER.map(era => (
-            <div>
-              <dt>{era.years}</dt>
-              <dd>
-                <strong>{era.role}</strong> {era.focus}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-    )
-  }
-
-  <section class="section">
-    <h2>Writing</h2>
-    <PostList posts={posts} />
+    </ol>
   </section>
 
   <section class="section">
-    <h2>Contact</h2>
-    <p>The best way to reach me is LinkedIn, or <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
-    <SocialLinks />
+    <h2>Path</h2>
+    <ol class="path">
+      {
+        CAREER.map(step => (
+          <li>
+            <span class="index">{step.years ?? step.stage}</span>
+            <strong>{step.years ? step.stage : step.detail}</strong>
+            {step.years && <span>{step.detail}</span>}
+          </li>
+        ))
+      }
+    </ol>
+    <p class="note">{CAREER_NOTE}</p>
+  </section>
+
+  <section class="section split">
+    <div>
+      <h2>Writing</h2>
+      <p>
+        {posts.length} articles from {Math.min(...years)}–{Math.max(...years)} on Angular, TypeScript and testing.{' '}
+        <a href="/page/1/">Read the archive</a>
+      </p>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <p>The best way to reach me is LinkedIn, or <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+      <SocialLinks />
+    </div>
   </section>
 </Base>
