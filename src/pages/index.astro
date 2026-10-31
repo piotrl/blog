@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import avatar from '../../content/assets/author.png';
+import PostList from '../components/PostList.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { ABOUT, AUTHOR, POSTS_PER_PAGE, SITE_DESCRIPTION } from '../consts';
+import Base from '../layouts/Base.astro';
+import { getPosts } from '../lib/posts';
+import { person, withContext } from '../lib/schema';
+
+const posts = (await getPosts()).slice(0, POSTS_PER_PAGE);
+---
+
+<Base title="@constjs" description={SITE_DESCRIPTION} jsonLd={withContext(person(Astro.site!))}>
+  <section class="intro">
+    <Image src={avatar} width={120} height={120} alt="author" class="avatar" loading="eager" />
+    <div>
+      <h1>Hey! I’m <b>{AUTHOR}</b></h1>
+      <p>{ABOUT}<br /><a href="/about/">👉 Learn more</a></p>
+      <SocialLinks />
+    </div>
+  </section>
+
+  <h2 class="section-title">Latest Stories</h2>
+  <PostList posts={posts} />
+</Base>

@@ -69,7 +69,7 @@ How to implement `PWA`*requirement — Network independence? Cache components ne
 
 This presentation focuses on handling offline state, but very good use case are notifications and background sync.
 
-![Service worker intercepts calls to server and restores data from cache if needed](https://cdn-images-1.medium.com/max/2044/1*NPRlIB56AV3umtg5fe4gGw.png)*Service worker intercepts calls to server and restores data from cache if needed*
+![Service worker intercepts calls to server and restores data from cache if needed](./service-worker-cache.png)*Service worker intercepts calls to server and restores data from cache if needed*
 
 ## React Native — Success case study
 
@@ -81,7 +81,7 @@ There is no WebView. Means no HTML or CSS. Everything is compiled to native comp
 
 They encouraged native developers to write [JavaScript](https://hackernoon.com/tagged/javascript), however that didn’t fit well. Technologically they used Flow type to keep code more familiar to Kotlin and Swift.
 
-![Business logic reused, views remain platform-specific](https://cdn-images-1.medium.com/max/2000/1*F92KQQX2xPFapIRkWjL_6Q.png)*Business logic reused, views remain platform-specific*
+![Business logic reused, views remain platform-specific](./shared-business-logic.png)*Business logic reused, views remain platform-specific*
 
 The success of *Pudelek app* is considered in following aspects:
 
@@ -129,7 +129,7 @@ How to answer a question: *We need a mobile app?*
 
 Maxim showed lots of statistics how mobile web is growing and overcoming desktop in lots of different measures. It is correlated with demand for mobile app developers also.
 
-![As Web developers, we had multiple tries to involve in mobile world — but failed as HTML5 apps looked crappy and were unbelievably slow](https://cdn-images-1.medium.com/max/2650/1*aj40t20ilIqnYL6a9rYzow.png)*As Web developers, we had multiple tries to involve in mobile world — but failed as HTML5 apps looked crappy and were unbelievably slow*
+![As Web developers, we had multiple tries to involve in mobile world — but failed as HTML5 apps looked crappy and were unbelievably slow](./html5-mobile-attempts.png)*As Web developers, we had multiple tries to involve in mobile world — but failed as HTML5 apps looked crappy and were unbelievably slow*
 
 Progressive Web Apps are green octagon and meant to be “the next big thing”, I was especially interested in traits for not only users but business.
 
