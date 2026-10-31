@@ -31,18 +31,18 @@ const linkedIn = SOCIAL_LINKS.find(link => link.label === 'LinkedIn')!;
 >
   <section class="hero">
     <div class="hero-text">
-      <p class="eyebrow">{JOB_TITLE} · {EMPLOYER.name} · Gdańsk</p>
-      <h1>{AUTHOR_FULL_NAME}</h1>
+      <p class="eyebrow">{AUTHOR_FULL_NAME} · {JOB_TITLE} · {EMPLOYER.name} · Gdańsk</p>
+      <h1>Hi, I’m Piotr.</h1>
       <p class="lede">
-        I design how large web applications are structured, built and kept healthy in production. Frontend
-        architecture, observability and practical automation.
+        I like untangling large web apps: how they’re built, shipped and kept healthy once real users show up. Mostly
+        frontend architecture, observability, and automating anything I’ve had to do twice.
       </p>
       <p class="hero-links">
         <a href="/about/">About me</a>
         <a href={linkedIn.url}>LinkedIn ↗</a>
       </p>
     </div>
-    <Topology sources={['logs', 'metrics', 'traces']} />
+    <Topology sources={['logs', 'metrics', 'traces']} note="that’s me!" />
   </section>
 
   <section class="section">
