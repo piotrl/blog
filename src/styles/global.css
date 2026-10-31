@@ -249,15 +249,6 @@ time {
   stroke-width: 2.5;
 }
 
-.topology .platform .pulse {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: pulse 2.4s ease-out infinite;
-}
-
 @keyframes telemetry {
   from {
     stroke-dashoffset: 80;
@@ -268,21 +259,8 @@ time {
   }
 }
 
-@keyframes pulse {
-  from {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-
-  to {
-    opacity: 0;
-    transform: scale(1.6);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .topology .flows path,
-  .topology .platform .pulse,
   .hero-links a:hover,
   .split a:hover {
     animation: none;
@@ -290,10 +268,6 @@ time {
 
   .focus li {
     transition: none;
-  }
-
-  .topology .platform .pulse {
-    display: none;
   }
 }
 
