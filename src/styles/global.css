@@ -316,10 +316,6 @@ time {
   stroke-width: 6px;
 }
 
-.topology:hover .flows path {
-  animation-duration: 1s;
-}
-
 .section {
   margin-top: 4.5rem;
 }

@@ -2,7 +2,6 @@
 import SocialLinks from '../components/SocialLinks.astro';
 import Topology from '../components/Topology.astro';
 import {
-  AUTHOR_FULL_NAME,
   CAREER,
   CAREER_NOTE,
   CAREER_SINCE,
@@ -31,7 +30,7 @@ const linkedIn = SOCIAL_LINKS.find(link => link.label === 'LinkedIn')!;
 >
   <section class="hero">
     <div class="hero-text">
-      <p class="eyebrow">{AUTHOR_FULL_NAME} · {JOB_TITLE} · {EMPLOYER.name} · Gdańsk</p>
+      <p class="eyebrow">{JOB_TITLE} · {EMPLOYER.name} · Gdańsk</p>
       <h1>Hi, I’m Piotr.</h1>
       <p class="lede">
         I like untangling large web apps: how they’re built, shipped and kept healthy once real users show up. Mostly
