@@ -333,15 +333,15 @@ time {
 }
 
 .path {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  counter-reset: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
 }
 
 .path li {
   position: relative;
   display: grid;
   gap: 0.25rem;
-  padding: 1.75rem 1.5rem 0 0;
+  padding: 1.75rem 1rem 0 0;
 }
 
 .path li::before {
@@ -371,8 +371,15 @@ time {
 }
 
 .path strong {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 600;
+  line-height: 1.35;
+}
+
+.path li > span:last-child {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.45;
 }
 
 .note {
@@ -568,6 +575,10 @@ time {
   .path,
   .split {
     grid-template-columns: 1fr;
+  }
+
+  .path {
+    grid-auto-flow: row;
   }
 
   .hero {

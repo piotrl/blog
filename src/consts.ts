@@ -32,11 +32,16 @@ export const FOCUS_AREAS = [
 export const CONTACT_EMAIL = 'mail@piotrl.net';
 
 // Career path on the home page; `years` is shown only when set.
-export const CAREER: { stage: string; detail: string; years?: string }[] = [
-  { stage: 'Backend', detail: 'Java ecosystem' },
-  { stage: 'Frontend', detail: 'JavaScript and TypeScript' },
-  { stage: 'Architecture', detail: 'Product Architect at Dynatrace' },
+// Career path on the home page: short on purpose, details live on LinkedIn.
+export const CAREER: { stage: string; detail: string }[] = [
+  { stage: 'Java backends', detail: 'Java and Spring services' },
+  { stage: 'Angular monorepos', detail: 'Frontend at scale' },
+  { stage: 'Teaching', detail: 'Bootcamps and workshops' },
+  { stage: 'React micro apps', detail: 'Apps and platform libraries' },
+  { stage: 'Leadership', detail: 'Team captain and mentor' },
+  { stage: 'Product architecture', detail: 'Product Architect at Dynatrace' },
 ];
+export const CAREER_SINCE = 2013;
 export const CAREER_NOTE =
   'Along the way: products shipped as SaaS and on-premise, and long-term migrations.';
 
