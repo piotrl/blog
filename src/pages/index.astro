@@ -1,8 +1,8 @@
 ---
 import SocialLinks from '../components/SocialLinks.astro';
+import Journey from '../components/Journey.astro';
 import Topology from '../components/Topology.astro';
 import {
-  CAREER,
   CAREER_NOTE,
   CAREER_SINCE,
   CONTACT_EMAIL,
@@ -59,16 +59,7 @@ const linkedIn = SOCIAL_LINKS.find(link => link.label === 'LinkedIn')!;
 
   <section class="section">
     <h2>Journey</h2>
-    <ol class="path">
-      {
-        CAREER.map(step => (
-          <li>
-            <strong>{step.stage}</strong>
-            <span>{step.detail}</span>
-          </li>
-        ))
-      }
-    </ol>
+    <Journey />
     <p class="note">
       Since {CAREER_SINCE}. {CAREER_NOTE} <a href={linkedIn.url}>Full history on LinkedIn</a></p>
   </section>

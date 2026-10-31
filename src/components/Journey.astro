@@ -1,0 +1,114 @@
+---
+import { JOURNEY } from '../consts';
+
+type Point = { x: number; y: number };
+
+const { tech, people, both, merge } = JOURNEY;
+
+// One layout function, two orientations: `along` runs with time, `across` separates the lanes.
+const layout = (horizontal: boolean) => {
+  const [length, breadth] = horizontal ? [960, 260] : [620, 340];
+  const at = (along: number, across: number): Point =>
+    horizontal ? { x: along, y: across } : { x: across, y: along };
+  const lanes = horizontal
+    ? { tech: breadth * 0.2, people: breadth * 0.8, middle: breadth / 2 }
+    : { tech: 24, people: breadth - 24, middle: breadth / 2 };
+  const start = 40;
+  const mergeAt = length - (horizontal ? 110 : 90);
+  const bendFrom = mergeAt - (horizontal ? 170 : 130);
+  const step = (bendFrom - start - 40) / tech.length;
+  const stops = tech.map((_, i) => start + 40 + step * (i + 0.5));
+  const m = at(mergeAt - 30, lanes.middle);
+  const d = at(mergeAt, lanes.middle);
+  const lane = (across: number) => {
+    const [a, b, c] = [at(start, across), at(bendFrom, across), at(mergeAt - 30, across)];
+    return `M${a.x} ${a.y}L${b.x} ${b.y}C${c.x} ${c.y} ${m.x} ${m.y} ${d.x} ${d.y}`;
+  };
+  // The fuzzy zone is the area between both lanes, closing where they merge.
+  const zone = (() => {
+    const [b, c, a] = [at(bendFrom, lanes.people), at(mergeAt - 30, lanes.people), at(start, lanes.people)];
+    return `${lane(lanes.tech)}C${m.x} ${m.y} ${c.x} ${c.y} ${b.x} ${b.y}L${a.x} ${a.y}Z`;
+  })();
+  return {
+    viewBox: horizontal ? `0 0 ${length} ${breadth}` : `0 0 ${breadth} ${length}`,
+    horizontal,
+    zone,
+    techPath: lane(lanes.tech),
+    peoplePath: lane(lanes.people),
+    tail: (() => {
+      const [a, b] = [at(mergeAt, lanes.middle), at(horizontal ? length - 20 : mergeAt + 30, lanes.middle)];
+      return `M${a.x} ${a.y}L${b.x} ${b.y}`;
+    })(),
+    tech: tech.map((label, i) => ({ label, ...at(stops[i], lanes.tech) })),
+    people: people.map((label, i) => ({ label, ...at(stops[i], lanes.people) })),
+    both: both.map((label, i) => ({ label, ...at(stops[i] + (horizontal ? 0 : step / 2), lanes.middle) })),
+    merge: { label: merge, ...at(mergeAt + (horizontal ? 40 : 30), lanes.middle) },
+    laneLabels: [
+      { label: 'engineering', ...at(start, lanes.tech) },
+      { label: 'people', ...at(start, lanes.people) },
+    ],
+  };
+};
+
+const variants = [layout(true), layout(false)];
+---
+
+{
+  variants.map(v => (
+    <svg
+      class:list={['journey', v.horizontal ? 'journey-wide' : 'journey-tall']}
+      viewBox={v.viewBox}
+      role="img"
+      aria-label={`Engineering: ${tech.join(', ')}. People: ${people.join(', ')}. Both: ${both.join(', ')}. Merging into ${merge}.`}
+    >
+      <defs>
+        <linearGradient id={`fuzz-${v.horizontal}`} x1="0" y1="0" x2={v.horizontal ? 0 : 1} y2={v.horizontal ? 1 : 0}>
+          <stop offset="0" class="stop-tech" />
+          <stop offset="0.5" class="stop-tech" stop-opacity="0" />
+          <stop offset="0.5" class="stop-people" stop-opacity="0" />
+          <stop offset="1" class="stop-people" />
+        </linearGradient>
+      </defs>
+      <path class="zone" d={v.zone} fill={`url(#fuzz-${v.horizontal})`} />
+      <path class="band band-tech" d={v.techPath} />
+      <path class="band band-people" d={v.peoplePath} />
+      <path class="band band-merged" d={v.tail} />
+      <path class="line line-tech" d={v.techPath} />
+      <path class="line line-people" d={v.peoplePath} />
+      <path class="line line-merged" d={v.tail} />
+      {v.laneLabels.map(l => (
+        <text
+          class="lane-label"
+          x={v.horizontal ? l.x + 12 : l.label === 'people' ? l.x + 10 : l.x - 10}
+          y={v.horizontal ? (l.label === 'people' ? l.y - 14 : l.y + 24) : l.y - 22}
+          text-anchor={v.horizontal || l.label !== 'people' ? 'start' : 'end'}
+        >
+          {l.label}
+        </text>
+      ))}
+      {v.both.map(b => (
+        <text class="both" x={b.x} y={b.y + 5} text-anchor="middle">
+          {b.label}
+        </text>
+      ))}
+      {[...v.tech.map(s => ({ ...s, lane: 'tech' })), ...v.people.map(s => ({ ...s, lane: 'people' }))].map(s => (
+        <g class={`stage stage-${s.lane}`}>
+          <circle cx={s.x} cy={s.y} r="6" />
+          <text
+            x={v.horizontal ? s.x : s.lane === 'tech' ? s.x + 16 : s.x - 16}
+            y={v.horizontal ? (s.lane === 'tech' ? s.y - 20 : s.y + 32) : s.y + 5}
+            text-anchor={v.horizontal ? 'middle' : s.lane === 'tech' ? 'start' : 'end'}
+          >
+            {s.label}
+          </text>
+        </g>
+      ))}
+      <g class="merge">
+        <circle cx={v.merge.x} cy={v.merge.y} r="11" />
+        <text x={v.merge.x} y={v.merge.y + 34} text-anchor="middle">
+          {v.merge.label}
+        </text>
+      </g>
+    </svg>
+  ))
+}

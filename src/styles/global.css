@@ -15,6 +15,7 @@
   --accent: #1f7a57;
   --accent-soft: #e3f2ea;
   --line: #c9cdd3;
+  --people: #6b5bd2;
   --measure: 42rem;
   --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -31,6 +32,7 @@
     --accent: #6fd3a5;
     --accent-soft: #15302a;
     --line: #3a3f48;
+    --people: #a99cf0;
   }
 
   .astro-code,
@@ -44,12 +46,14 @@
   :root {
     --accent: oklch(0.5 0.11 var(--hue));
     --accent-soft: oklch(0.95 0.03 var(--hue));
+    --people: oklch(0.52 0.13 calc(var(--hue) + 140));
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
       --accent: oklch(0.8 0.12 var(--hue));
       --accent-soft: oklch(0.27 0.04 var(--hue));
+      --people: oklch(0.78 0.11 calc(var(--hue) + 140));
     }
   }
 }
@@ -310,8 +314,7 @@ time {
   margin: 0;
 }
 
-.focus,
-.path {
+.focus {
   display: grid;
   margin: 0;
   padding: 0;
@@ -372,54 +375,94 @@ time {
   color: var(--muted);
 }
 
-.path {
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(0, 1fr);
+.journey {
+  width: 100%;
+  height: auto;
+  overflow: visible;
 }
 
-.path li {
-  position: relative;
-  display: grid;
-  gap: 0.25rem;
-  padding: 1.75rem 1rem 0 0;
+.journey-tall {
+  display: none;
+  max-width: 24rem;
+  margin-inline: auto;
 }
 
-.path li::before {
-  content: '';
-  position: absolute;
-  top: 0.4rem;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--line);
+.journey .zone {
+  opacity: 0.22;
 }
 
-.path li::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0.875rem;
-  height: 0.875rem;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--accent);
+.journey .stop-tech {
+  stop-color: var(--accent);
 }
 
-.path li:last-child::after {
-  background: var(--accent);
+.journey .stop-people {
+  stop-color: var(--people);
 }
 
-.path strong {
-  font-size: 1rem;
+.journey .band {
+  fill: none;
+  stroke-width: 30;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.16;
+}
+
+.journey .line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.journey .band-tech,
+.journey .line-tech,
+.journey .band-merged,
+.journey .line-merged {
+  stroke: var(--accent);
+}
+
+.journey .band-people,
+.journey .line-people {
+  stroke: var(--people);
+}
+
+.journey text {
+  fill: var(--text);
+  font-size: 15px;
   font-weight: 600;
-  line-height: 1.35;
 }
 
-.path li > span:last-child {
-  color: var(--muted);
-  font-size: 0.875rem;
-  line-height: 1.45;
+.journey .lane-label {
+  fill: var(--muted);
+  font: 12px var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.journey .both {
+  fill: var(--muted);
+  font: italic 13px var(--font-body);
+}
+
+.journey .stage circle {
+  fill: var(--bg);
+  stroke-width: 2.5;
+}
+
+.journey .stage-tech circle {
+  stroke: var(--accent);
+}
+
+.journey .stage-people circle {
+  stroke: var(--people);
+}
+
+.journey .merge circle {
+  fill: var(--accent);
+  stroke: var(--bg);
+  stroke-width: 3;
+}
+
+.journey .merge text {
+  font-size: 16px;
 }
 
 .note {
@@ -621,42 +664,16 @@ time {
 @media (max-width: 760px) {
   .hero,
   .focus,
-  .path,
   .split {
     grid-template-columns: 1fr;
   }
 
-  .path {
-    grid-auto-flow: row;
-  }
-
-  .hero {
-    gap: 1.5rem;
-  }
-
-  .path {
-    gap: 1.5rem;
-  }
-
-  .path li {
-    padding: 0 0 0 2rem;
-  }
-
-  .path li::before {
-    top: 0.5rem;
-    bottom: -1.5rem;
-    left: 0.375rem;
-    right: auto;
-    width: 2px;
-    height: auto;
-  }
-
-  .path li:last-child::before {
+  .journey-wide {
     display: none;
   }
 
-  .path li::after {
-    top: 0.25rem;
+  .journey-tall {
+    display: block;
   }
 
   .split {

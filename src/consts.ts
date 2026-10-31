@@ -31,19 +31,15 @@ export const FOCUS_AREAS = [
 
 export const CONTACT_EMAIL = 'mail@piotrl.net';
 
-// Career path on the home page; `years` is shown only when set.
-// Career path on the home page: short on purpose, details live on LinkedIn.
-export const CAREER: { stage: string; detail: string }[] = [
-  { stage: 'Java backends', detail: 'Java and Spring services' },
-  { stage: 'Angular monorepos', detail: 'Frontend at scale' },
-  { stage: 'Teaching', detail: 'Bootcamps and workshops' },
-  { stage: 'React micro apps', detail: 'Apps and platform libraries' },
-  { stage: 'Leadership', detail: 'Team captain and mentor' },
-  { stage: 'Product architecture', detail: 'Product Architect at Dynatrace' },
-];
+// Journey on the home page: two lanes that blur into each other and merge into the current role.
+export const JOURNEY = {
+  tech: ['Java backends', 'Angular monorepos', 'React micro apps'],
+  people: ['Team collaboration', 'Teaching', 'Leadership'],
+  both: ['Monorepo rules', 'Long-term migrations', 'Mentoring'],
+  merge: 'Product architecture',
+};
 export const CAREER_SINCE = 2013;
-export const CAREER_NOTE =
-  'Along the way: products shipped as SaaS and on-premise, and long-term migrations.';
+export const CAREER_NOTE = 'Along the way: products shipped as SaaS and on-premise.';
 
 // Random seed (`openssl rand -hex 16`). Drives the accent hue and the home page topology; change it to reroll.
 export const DESIGN_SEED = '6f58704967446e7e004939d7df2e35ad';
