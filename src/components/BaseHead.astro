@@ -12,10 +12,11 @@ interface Props {
   image?: ImageMetadata;
   type?: 'website' | 'article';
   publishedTime?: Date;
+  modifiedTime?: Date;
   jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, image, type = 'website', publishedTime, jsonLd } = Astro.props;
+const { title, description, image, type = 'website', publishedTime, modifiedTime, jsonLd } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 // Re-encoding the PNG covers made several of them larger, so the original file is used.
@@ -44,6 +45,7 @@ const pageTitle = title.startsWith(SITE_TITLE) ? title : `${title} | ${SITE_TITL
 <meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
 {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
 {
   ogImageURL && (
     <>

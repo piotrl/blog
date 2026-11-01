@@ -1,10 +1,10 @@
 ---
-title: 'JS Poland 2017 — Takeaways'
+title: 'JS Poland 2017: notes on PWAs, service workers and RxJS'
 author: [Piotr Lewandowski]
 tags: ['events', 'javascript']
 cover: './cover.png'
 date: '2017-06-22'
-description: 'Notes from my visit at JS Poland'
+description: 'Conference notes from JS Poland 2017: Progressive Web Apps, service workers, async functions, React Native, RxJS and developer careers.'
 ---
 
 ### Notes from [the conference](http://www.js-poland.pl). Based on 20 hand-written pages. Strong or misleading interpretations are all on me.

@@ -1,10 +1,10 @@
 ---
-title: 'TypeScript: Create a condition-based subset types'
+title: 'TypeScript subset types: filter interface keys by value type'
 author: [Piotr Lewandowski]
 tags: ['typescript']
 cover: './cover.png'
 date: '2018-06-23'
-description: 'Deep dive into typing system to solve THE ultimate riddle'
+description: 'Build a TypeScript type that keeps only the keys whose values match a condition, step by step with conditional and mapped types.'
 ---
 
 In this article, **we’re going to experiment with TypeScript 2.8 conditional and [mapping types](http://www.typescriptlang.org/docs/handbook/advanced-types.html#mapped-types)**. The goal is to create a type that would filter out all keys from your interface, that aren’t matching condition.

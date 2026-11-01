@@ -1,10 +1,10 @@
 ---
-title: 'Angular with Ivy — Build performance review'
+title: 'Angular Ivy: bundle size and build time benchmarks'
 author: [Piotr Lewandowski]
 tags: ['angular', 'ivy', 'build', 'performance']
 cover: './cover.png'
 date: '2020-04-14'
-description: 'We have seen various benchmarks and charts on conferences. What is the real impact on our application?'
+description: 'Angular 9 Ivy measured on a real app: bundle size, compilation speed and unit test times before and after the switch, and whether it was worth it.'
 ---
 
 In this article, we’re going to dive into bundle-size and compilation speed insights. We have seen various benchmarks and charts on conferences. What is the real impact on our application?
