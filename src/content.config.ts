@@ -10,6 +10,8 @@ const blog = defineCollection({
       title: z.string(),
       description: z.string(),
       date: z.coerce.date(),
+      // Set only for substantive rewrites, not copy edits.
+      updated: z.coerce.date().optional(),
       tags: z.array(z.string()).default([]),
       author: z.array(z.string()).optional(),
       cover: image().optional(),

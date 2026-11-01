@@ -1,11 +1,11 @@
 ---
-title: 'Angular testing: When to use shallow rendering?'
+title: 'Angular shallow testing: when to use NO_ERRORS_SCHEMA'
 author: [Piotr Lewandowski]
 tags: ['angular', 'testing', 'performance']
 date: '2021-04-09'
 cover: './cover.png'
 draft: false
-description: 'Go from 20s -> 50ms for testing huge components suites. Is shallow testing a silver bullet then?'
+description: 'Shallow rendering can take large Angular component tests from seconds to milliseconds. When to use NO_ERRORS_SCHEMA, and when to avoid it.'
 ---
 
 When you test components with multiple layers of children, there is a cost. Cost because of rendering. Cost because of the dependency maintenance for all children. 

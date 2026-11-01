@@ -1,10 +1,10 @@
 ---
-title: 'Angular Testing: Avoid done() function'
+title: 'Angular testing: replace done() with fakeAsync()'
 author: [Piotr Lewandowski]
 tags: ['angular', 'jest', 'testing']
 cover: './cover.png'
 date: '2021-03-03'
-description: 'Let’s talk about harmfulness of real asynchronicity in tests'
+description: 'Why done() callbacks make Angular and Jest tests flaky, and how to test Observables, Promises and callbacks with fakeAsync() instead.'
 ---
 
 Have you ever encountered random test instability on Continuous Integration? Called some test were just “flaky”? I guess you did! There might be lots of reasons for flakiness of tests. I found asynchronous operations are a great contributor to [flakiness score](https://engineering.fb.com/2020/12/10/developer-tools/probabilistic-flakiness/).
