@@ -5,7 +5,7 @@ tags: ['angular', 'i18n']
 cover: './cover.png'
 date: '2019-07-12'
 updated: '2022-02-18'
-description: 'Four ways to translate TypeScript enums in Angular: $localize in place, a switch-case function, ngSwitchCase and ICU messages, plus tests.'
+description: 'Four ways to translate and use TypeScript enums in Angular templates: $localize in place, a switch-case function, ngSwitchCase and ICU messages.'
 ---
 
 *Rewritten in Feb 2022. I've adjusted content to new Angular Ivy possibilities.*

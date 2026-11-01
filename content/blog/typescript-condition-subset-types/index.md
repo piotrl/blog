@@ -1,5 +1,5 @@
 ---
-title: 'TypeScript: filter interface keys by value type'
+title: 'TypeScript subset types: filter interface keys by value type'
 author: [Piotr Lewandowski]
 tags: ['typescript']
 cover: './cover.png'
