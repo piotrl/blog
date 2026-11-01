@@ -48,7 +48,7 @@ const jsonLd = withContext({
       <h1>{title}</h1>
       {isArchived && <p class="archive-note">Written in {date.getFullYear()}. Kept for reference, so some details may be dated.</p>}
     </header>
-    {cover && <Image src={cover} width={720} alt="" class="cover" loading="eager" />}
+    {cover && <Image src={cover} width={720} alt="" class="cover" loading="eager" fetchpriority="high" />}
     <div class="prose">
       <Content />
     </div>
