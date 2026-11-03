@@ -6,6 +6,8 @@ export default defineConfig({
   site: 'https://www.piotrl.net',
   trailingSlash: 'always',
   integrations: [sitemap()],
+  // ~3 KB brotli: inlining saves a render-blocking round trip that dominates LCP.
+  build: { inlineStylesheets: 'always' },
   env: {
     schema: {
       // Set in Netlify site settings; empty means no analytics script is rendered.
